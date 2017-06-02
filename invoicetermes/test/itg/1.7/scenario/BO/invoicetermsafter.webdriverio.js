@@ -11,6 +11,7 @@ describe('Check the order in BO', function(){
 		this.selector = globals.selector;
 		this.client.call(done);
 	});
+
 	process.on('uncaughtException', common.take_screenshot);
 	process.on('ReferenceError', common.take_screenshot);
 	after(common.after);
@@ -23,18 +24,18 @@ describe('Check the order in BO', function(){
                     .signinBO()
                     .waitForExist(this.selector.menu, 90000)
                     .call(done);
-
 			});
 		});
 
-		describe('Create order', function(done){
-		    it('should go to orders', function(done){
-		        global.fctname= this.test.title;
-			    this.client
-                    .click(this.selector.orders)
-                    .waitForExist(this.selector.orders_form, 90000)
-                    .call(done);
-		    });
+		describe('verify default configuration', function(done){
+
+           it('should go to orders', function(done){
+                    global.fctname= this.test.title;
+                    this.client
+                        .click(this.selector.orders)
+                        .waitForExist(this.selector.orders_form, 90000)
+                        .call(done);
+            });
 
             it('should go to first order', function(done){
 		        global.fctname= this.test.title;
@@ -50,7 +51,7 @@ describe('Check the order in BO', function(){
 				    .pause(2000)
                     .click('//*[@id="id_order_state_chosen"]/a')
                     .pause(2000)
-                    .click('//*[@id="id_order_state_chosen"]/div/ul/li[8]')
+                    .click('//*[@id="id_order_state_chosen"]/div/ul/li[12]')
                     .pause(2000)
                     .click('//*[@id="status"]/form/div/div[2]/button')
                     .call(done);
@@ -62,27 +63,40 @@ describe('Check the order in BO', function(){
 				    .pause(2000)
                     .click('//*[@id="tabOrder"]/li[2]/a')
                     .pause(2000)
-                    .click('//*[@id="invoice_1"]/td[3]/a')
-                    .pause(12000)
+                    .click('//*[@id="documents_table"]/tbody/tr[1]/td[3]/a')
+                    .pause(4000)
+                    .getText('//*[@id="documents_table"]/tbody/tr[1]/td[3]/a').then(function(text) {
+                        global.documentPDF = text;
+                        global.documentPDF = global.documentPDF.replace(/^#/, "");
+                    })
                     .call(done);
 		    });
 
-            it('should Go to document', function(done){
+       it('should Go to document', function(done){
 		        global.fctname= this.test.title;
 			    this.client
 				    .pause(2000)
-				    //.url('file:///home/fourat.achour/T%C3%A9l%C3%A9chargements/IN000001.pdf')
-                    pdfUtil.pdfToText('/home/fourat.achour/Téléchargements/IN000001.pdf', function(err, data) {
+				    function func_verify(x){
+				          if(x == -1 ){
+                            done(new Error("Unavailable module"));
+                        }else{
+                            done();
+                        }
+				    }
+                    pdfUtil.pdfToText('/home/fourat.achour/Téléchargements/'+global.documentPDF+'.pdf', function(err, data) {
                       if (err) throw(err);
-                      //console.log(data); //print text
-                      global
-                      console.log('holaaaaaaaaaaaaaaaaaaa'+data.indexOf('My Company'));
-                    });
+                      global.TextPosition = data.indexOf('Conditions d');
+                      func_verify(global.TextPosition);
+                    })
 
 
 		    });
 
+
 		});
+
+
+
 		
 	describe('Log out in Back Office', function(done){
         it('should log out successfully in BO', function(done){
