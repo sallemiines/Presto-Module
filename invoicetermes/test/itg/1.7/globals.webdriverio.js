@@ -99,7 +99,20 @@ module.exports = {
 		modules_installed: '(//div[@class="page-head-tabs"]/a)[2]',
 		modules_validate_uninstall: '//a[@class="btn btn-primary uppercase module_action_modal_uninstall"]',
 		close_sf_toolbar:'//a[@class="hide-button"]',
-
+		//module invocie terms
+		apparence_btn:'//*[@id="subtab-AdminParentThemes"]/a',
+		pages_btn:'//*[@id="subtab-AdminCmsContent"]/a',
+		search_zone_pages:'//*[@id="table-cms"]/thead/tr[2]/th[3]/input',
+		serach_btn_pages:'//*[@id="submitFilterButtoncms"]',
+        edit_btn_pages:'//*[@id="tr_1_3_2"]/td[7]/div/div/a',
+        btn_save_page:'//*[@id="cms_form_submit_btn"]',
+        First_order:'//*[@id="form-order"]/div/div[2]/table/tbody/tr[1]/td[12]/div/a',
+        panel_document:'//*[@id="tabOrder"]/li[2]/a',
+        btn_download:'//*[@id="documents_table"]/tbody/tr[1]/td[3]/a',
+        document_name:'//*[@id="documents_table"]/tbody/tr[1]/td[3]/a',
+        order_state:'//*[@id="id_order_state_chosen"]/a',
+        payment_accepted:'//*[@id="id_order_state_chosen"]/div/ul/li[12]',
+        valid_payment:'//*[@id="status"]/form/div/div[2]/button',
 	//FO
 		access_loginFO:'div.user-info > a',
 		loginFO: '//*[@id="login-form"]/section/div[1]/div[1]/input',

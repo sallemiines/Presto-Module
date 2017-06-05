@@ -40,20 +40,8 @@ describe('Check the order in BO', function(){
             it('should go to first order', function(done){
 		        global.fctname= this.test.title;
 			    this.client
-                    .click('//*[@id="form-order"]/div/div[2]/table/tbody/tr[1]/td[12]/div/a')
+                    .click(this.selector.First_order)
                     //.waitForExist('//*[@id="status"]/form/div/div[2]/button', 90000)
-                    .call(done);
-		    });
-
-            it('should payment accept', function(done){
-		        global.fctname= this.test.title;
-			    this.client
-				    .pause(2000)
-                    .click('//*[@id="id_order_state_chosen"]/a')
-                    .pause(2000)
-                    .click('//*[@id="id_order_state_chosen"]/div/ul/li[12]')
-                    .pause(2000)
-                    .click('//*[@id="status"]/form/div/div[2]/button')
                     .call(done);
 		    });
 
@@ -61,11 +49,11 @@ describe('Check the order in BO', function(){
 		        global.fctname= this.test.title;
 			    this.client
 				    .pause(2000)
-                    .click('//*[@id="tabOrder"]/li[2]/a')
+                    .click(this.selector.panel_document)
                     .pause(2000)
-                    .click('//*[@id="documents_table"]/tbody/tr[1]/td[3]/a')
+                    .click(this.selector.btn_download)
                     .pause(4000)
-                    .getText('//*[@id="documents_table"]/tbody/tr[1]/td[3]/a').then(function(text) {
+                    .getText(this.selector.btn_download).then(function(text) {
                         global.documentPDF = text;
                         global.documentPDF = global.documentPDF.replace(/^#/, "");
                     })
@@ -77,10 +65,10 @@ describe('Check the order in BO', function(){
 			    this.client
 				    .pause(2000)
 				    function func_verify(x){
-				          if(x == -1 ){
+				          if(x == "-1" ){
                              done();
                         }else{
-                             done(new Error("Unavailable module"));
+                             done(new Error("invoice terms existe"));
                         }
 				    }
                     pdfUtil.pdfToText('/home/fourat.achour/Téléchargements/'+global.documentPDF+'.pdf', function(err, data) {

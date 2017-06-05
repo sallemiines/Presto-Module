@@ -27,7 +27,7 @@ describe('Check the order in BO', function(){
 			});
 		});
 
-		describe('verify default configuration', function(done){
+		describe('verify the existence of the invoice terms', function(done){
 
            it('should go to orders', function(done){
                     global.fctname= this.test.title;
@@ -40,7 +40,7 @@ describe('Check the order in BO', function(){
             it('should go to first order', function(done){
 		        global.fctname= this.test.title;
 			    this.client
-                    .click('//*[@id="form-order"]/div/div[2]/table/tbody/tr[1]/td[12]/div/a')
+                    .click(this.selector.First_order)
                     //.waitForExist('//*[@id="status"]/form/div/div[2]/button', 90000)
                     .call(done);
 		    });
@@ -49,11 +49,11 @@ describe('Check the order in BO', function(){
 		        global.fctname= this.test.title;
 			    this.client
 				    .pause(2000)
-                    .click('//*[@id="id_order_state_chosen"]/a')
+                    .click(this.selector.order_state)
                     .pause(2000)
-                    .click('//*[@id="id_order_state_chosen"]/div/ul/li[12]')
+                    .click(this.selector.payment_accepted)
                     .pause(2000)
-                    .click('//*[@id="status"]/form/div/div[2]/button')
+                    .click(this.selector.valid_payment)
                     .call(done);
 		    });
 
@@ -61,11 +61,11 @@ describe('Check the order in BO', function(){
 		        global.fctname= this.test.title;
 			    this.client
 				    .pause(2000)
-                    .click('//*[@id="tabOrder"]/li[2]/a')
+                    .click(this.selector.panel_document)
                     .pause(2000)
-                    .click('//*[@id="documents_table"]/tbody/tr[1]/td[3]/a')
+                    .click(this.selector.btn_download)
                     .pause(4000)
-                    .getText('//*[@id="documents_table"]/tbody/tr[1]/td[3]/a').then(function(text) {
+                    .getText(this.selector.btn_download).then(function(text) {
                         global.documentPDF = text;
                         global.documentPDF = global.documentPDF.replace(/^#/, "");
                     })
@@ -78,7 +78,7 @@ describe('Check the order in BO', function(){
 				    .pause(2000)
 				    function func_verify(x){
 				          if(x == -1 ){
-                            done(new Error("Unavailable module"));
+                            done(new Error("invoice terms doesn't exist"));
                         }else{
                             done();
                         }
