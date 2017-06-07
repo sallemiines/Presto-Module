@@ -18,7 +18,7 @@ describe('Check the order in BO', function(){
 
 	try{
 		describe('Log in in Back Office', function(done){
-		    it('should log in successfully in BO', function(done){
+		    it('Should log in successfully in BO', function(done){
 		        global.fctname= this.test.title;
 			    this.client
                     .signinBO()
@@ -29,7 +29,7 @@ describe('Check the order in BO', function(){
 
 		describe('modify invoice terms', function(done){
 
-           it('should go to appearance', function(done){
+           it('Should go to appearance', function(done){
                     global.fctname= this.test.title;
                     this.client
                         .moveToObject(this.selector.apparence_btn)
@@ -38,7 +38,7 @@ describe('Check the order in BO', function(){
                         .call(done);
             });
 
-            it('search for invoice terms', function(done){
+            it('Search for invoice terms', function(done){
 		        global.fctname= this.test.title;
 			    this.client
                     .waitForExist(this.selector.search_zone_pages, 90000)
@@ -49,28 +49,19 @@ describe('Check the order in BO', function(){
                     .call(done);
 		    });
 
-            it('should edit the document', function(done){
+            it('Should edit the document', function(done){
 		        global.fctname= this.test.title;
 			    this.client
 				    .pause(2000)
-                    .execute(function() {
-                        document.getElementsByName("content_1").innerHTML="vasi";
-					 })
-
-                    .pause(10000)
-
-
-                    /*.moveToObject(this.selector.btn_save_page)
+				    .click('//*[@id="content_1_ifr"]')
+                    .elementActive().keys(" test")
+                    .moveToObject(this.selector.btn_save_page)
                     .pause(3000)
-                    .click(this.selector.btn_save_page)*/
+                    .click(this.selector.btn_save_page)
                     .call(done);
-
-
             });
 });
 
-
-		
 	describe('Log out in Back Office', function(done){
         it('should log out successfully in BO', function(done){
             global.fctname= this.test.title;

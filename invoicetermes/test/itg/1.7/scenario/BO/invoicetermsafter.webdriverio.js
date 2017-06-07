@@ -95,8 +95,6 @@ describe('Check the order in BO', function(){
 
 		});
 
-
-
 		
 	describe('Log out in Back Office', function(done){
         it('should log out successfully in BO', function(done){

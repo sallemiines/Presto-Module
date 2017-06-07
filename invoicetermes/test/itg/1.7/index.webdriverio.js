@@ -18,9 +18,11 @@ describe('Allscenario', function(){
 	});
 
 
-	// require('./scenario/BO/invoicetermsbefore.webdriverio');
-	// require('./scenario/FO/buy_product.webdriverio');
-	// require('./scenario/BO/invoicetermsafter.webdriverio');
+	 require('./scenario/BO/invoicetermsbefore.webdriverio');
+	 require('./scenario/FO/buy_product.webdriverio');
+	 require('./scenario/BO/invoicetermsafter.webdriverio');
 	 require('./scenario/BO/invoicetermsedit.webdriverio');
+     require('./scenario/FO/buy_product.webdriverio');
+     require('./scenario/BO/invoicetermsafteredit.webdriverio');
 
 });
