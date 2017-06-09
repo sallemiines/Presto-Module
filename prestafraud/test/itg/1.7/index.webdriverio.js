@@ -17,15 +17,8 @@ describe('Allscenario', function(){
 			.call(done);
 	});
 
-    /*if (typeof module_tech_name !== 'undefined' && module_tech_name != "None") {
-        //require('./scenario/BO/install_and_uninstall_module.js');
-        require('./scenario/BO/install_module.js');
-
-    }*/
     require('./scenario/BO/configuration.webdriverio.js');
-   // require('./scenario/FO/check_notification.js');
-    /*if (typeof module_tech_name !== 'undefined' && module_tech_name != "None") {
-        require('./scenario/BO/uninstall_module.js');
-    }*/
+    require('./scenario/FO/buy_product.webdriverio.js');
+    require('./scenario/BO/verify.webdriverio.js');
 
 });
