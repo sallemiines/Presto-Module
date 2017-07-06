@@ -109,9 +109,6 @@ module.exports = {
     after: function (done) {
             done();
     },
-    take_screenshot: function (done) {
-        client.saveScreenshot(__dirname +'/screenshots/' + client.desiredCapabilities.browserName + '-Exception' + '_' + global.fctname + '.png');
-    },
     initMocha: function () {
         this.timeout(900000000);
         this.slow(45000);
