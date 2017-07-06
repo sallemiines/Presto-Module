@@ -12,8 +12,7 @@ describe('The Purchase of a product', function(){
 		this.selector = globals.selector;
 		this.client.call(done);
 	});
-    process.on('uncaughtException', common.take_screenshot);
-    process.on('ReferenceError', common.take_screenshot);
+
 	after(common.after);
 		
 		it('Open the shop and loggin FO', function(done){
@@ -36,7 +35,7 @@ describe('The Purchase of a product', function(){
 		    global.fctname= this.test.title;
 			this.client
 			    .waitForExist(this.selector.home_logo_url, 90000)
-				.click(this.selector.home_logo_url')
+				.click(this.selector.home_logo_url)
 				.waitForExist(this.selector.First_product, 90000)
 				.click(this.selector.First_product)
 				.waitForExist(this.selector.product_image, 90000)

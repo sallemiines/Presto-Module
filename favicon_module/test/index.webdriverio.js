@@ -18,13 +18,13 @@ describe('Allscenario', function () {
     });
 
     // install and uninstall the faviconotification module
-    require('./scenario/BO/install_and_uninstall_module.js');
+      //require('./scenario/BO/install_and_uninstall_module.js');
 
     // install the faviconotification module
-    require('./scenario/BO/install_module.js');
+      //require('./scenario/BO/install_module.js');
 
     // Test case n°1 = Check Favicon in Front Office
     require('./scenario/FO/check_favicon.webdriverio');
 
-    require('./scenario/BO/uninstall_module.js');
+   // require('./scenario/BO/uninstall_module.js');
 });

@@ -18,10 +18,10 @@ describe('Allscenario', function(){
 	});
 
     // install and uninstall the invoiceterms module
-    require('./scenario/BO/install_and_uninstall_module.js');
+   // require('./scenario/BO/install_and_uninstall_module.js');
 
     // install the invoiceterms module
-    require('./scenario/BO/install_module.js');
+   // require('./scenario/BO/install_module.js');
 
     // Test case n°1 = Check the default configuration
 	 require('./scenario/BO/default_configuration.webdriverio');

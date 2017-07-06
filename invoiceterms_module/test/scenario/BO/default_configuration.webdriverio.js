@@ -12,14 +12,11 @@ describe('Test case n°1 = Check the default configuration', function(){
 		this.client.call(done);
 	});
 
-	process.on('uncaughtException', common.take_screenshot);
-	process.on('ReferenceError', common.take_screenshot);
 	after(common.after);
 
-	try{
+
 		describe('Log in in Back Office', function(done){
 		    it('should log in successfully in BO', function(done){
-		        global.fctname= this.test.title;
 			    this.client
                     .signinBO()
                     .waitForExist(this.selector.menu, 90000)
@@ -30,7 +27,6 @@ describe('Test case n°1 = Check the default configuration', function(){
 		describe('Check the default configuration in BO', function(done){
 
            it('should go to orders', function(done){
-                    global.fctname= this.test.title;
                     this.client
                         .click(this.selector.orders)
                         .waitForExist(this.selector.orders_form, 90000)
@@ -38,14 +34,12 @@ describe('Test case n°1 = Check the default configuration', function(){
             });
 
             it('should go to first order', function(done){
-		        global.fctname= this.test.title;
 			    this.client
                     .click(this.selector.First_order)
                     .call(done);
 		    });
 
             it('should download the document', function(done){
-		        global.fctname= this.test.title;
 			    this.client
 				    .pause(2000)
                     .click(this.selector.panel_document)
@@ -60,7 +54,6 @@ describe('Test case n°1 = Check the default configuration', function(){
 		    });
 
             it('should Go to document', function(done){
-		        global.fctname= this.test.title;
 			    this.client
 				    .pause(2000)
 				    function func_verify(x){
@@ -87,12 +80,10 @@ describe('Test case n°1 = Check the default configuration', function(){
 		
 	describe('Log out in Back Office', function(done){
         it('should log out successfully in BO', function(done){
-            global.fctname= this.test.title;
 			this.client
 				.signoutBO()
 				.call(done);
 		});
 	});
-	}catch(e){
-	};
+
 });

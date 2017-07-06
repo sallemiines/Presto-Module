@@ -12,8 +12,7 @@ describe('Test case n°3-1 = Modify terms and conditions of use', function(){
 		this.client.call(done);
 	});
 
-	process.on('uncaughtException', common.take_screenshot);
-	process.on('ReferenceError', common.take_screenshot);
+
 	after(common.after);
 
 	try{
