@@ -39,6 +39,18 @@ describe('Test case n°1 = Check the default configuration', function(){
                     .call(done);
 		    });
 
+            it('should payment accept', function(done){
+                global.fctname= this.test.title;
+                this.client
+                    .pause(2000)
+                    .click(this.selector.order_state)
+                    .pause(2000)
+                    .click(this.selector.payment_accepted)
+                    .pause(2000)
+                    .click(this.selector.valid_payment)
+                    .call(done);
+            });
+
             it('should download the document', function(done){
 			    this.client
 				    .pause(2000)

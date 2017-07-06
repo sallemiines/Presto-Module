@@ -53,7 +53,7 @@ describe('Test case n°3-1 = Modify terms and conditions of use', function(){
 			    this.client
 				    .pause(2000)
 				    .click(this.selector.btn_edit_page_terms)
-                    .elementActive().keys(" test")
+                    .elementActive().keys("Invoice termes Modification")
                     .moveToObject(this.selector.btn_save_page)
                     .pause(3000)
                     .click(this.selector.btn_save_page)

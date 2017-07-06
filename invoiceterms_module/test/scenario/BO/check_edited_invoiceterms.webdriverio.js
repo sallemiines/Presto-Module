@@ -28,8 +28,8 @@ describe('Test case n°3-2 :Check the modifictation Of terms', function(){
 
 		describe('check the edited terms modification in BO ', function(done){
 
-           it('should go to orders', function(done){
-                global.fctname= this.test.title;
+
+            it('should go to orders', function(done){
                 this.client
                     .click(this.selector.orders)
                     .waitForExist(this.selector.orders_form, 90000)
@@ -37,38 +37,36 @@ describe('Test case n°3-2 :Check the modifictation Of terms', function(){
             });
 
             it('should go to first order', function(done){
-		        global.fctname= this.test.title;
-			    this.client
+                this.client
                     .click(this.selector.First_order)
                     .call(done);
-		    });
+            });
 
             it('should payment accept', function(done){
-		        global.fctname= this.test.title;
-			    this.client
-				    .pause(2000)
+                global.fctname= this.test.title;
+                this.client
+                    .pause(2000)
                     .click(this.selector.order_state)
                     .pause(2000)
                     .click(this.selector.payment_accepted)
                     .pause(2000)
                     .click(this.selector.valid_payment)
                     .call(done);
-		    });
+            });
 
             it('should download the document', function(done){
-		        global.fctname= this.test.title;
-			    this.client
-				    .pause(2000)
+                this.client
+                    .pause(2000)
                     .click(this.selector.panel_document)
                     .pause(2000)
                     .click(this.selector.btn_download)
                     .pause(4000)
                     .getText(this.selector.btn_download).then(function(text) {
-                        global.documentPDF = text;
-                        global.documentPDF = global.documentPDF.replace(/^#/, "");
-                    })
+                    global.documentPDF = text;
+                    global.documentPDF = global.documentPDF.replace(/^#/, "");
+                })
                     .call(done);
-		    });
+            });
 
        it('should Go to document', function(done){
 		        global.fctname= this.test.title;
@@ -83,7 +81,7 @@ describe('Test case n°3-2 :Check the modifictation Of terms', function(){
 				    }
                     pdfUtil.pdfToText('/home/fourat.achour/Téléchargements/'+global.documentPDF+'.pdf', function(err, data) {
                       if (err) throw(err);
-                      global.TextPosition = data.indexOf('test');
+                      global.TextPosition = data.indexOf('Invoice termes Modification');
                       func_verify(global.TextPosition);
                     })
 
