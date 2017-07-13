@@ -41,8 +41,8 @@ describe('Verify the Configuration of the Module', function () {
 
         it('should verify the notification Prestafraud ', function(done){
             this.client
-                .waitForExist('//*[@id="content"]/div[5]/div/fieldset/legend',5000)
-                .getText('//*[@id="content"]/div[5]/div/fieldset/legend').then(function(text) {
+                .waitForExist(this.selector.legand_prestashop,5000)
+                .getText(this.selector.legand_prestashop).then(function(text) {
                     if(text != "PrestaShop Security" ){
                          done(new Error(""));
                     }
