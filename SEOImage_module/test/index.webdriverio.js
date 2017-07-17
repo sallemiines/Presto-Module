@@ -17,10 +17,10 @@ describe('Allscenario', function(){
 			.call(done);
 	});
 
-    // install and uninstall the invoiceterms module
+    // install and uninstall the SEOimage module
     // require('./scenario/BO/install_and_uninstall_module.js');
 
-    // install the invoiceterms module
+    // install the SEOimage module
     // require('./scenario/BO/install_module.js');
 
     // Test case n°1 = Add rule on all categories - FR language
@@ -43,6 +43,6 @@ describe('Allscenario', function(){
 
 
 
-    // uninstall the faviconotification module
+    // uninstall the SEOimage module
     // require('./scenario/BO/uninstall_module.js');
 });
