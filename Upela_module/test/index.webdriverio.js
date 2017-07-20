@@ -23,9 +23,16 @@ describe('Allscenario', function(){
     // install the paypal module
     // require('./scenario/BO/install_module.js');
 
-    // Test case n°1 = Check the default configuration
-    //require('./scenario/BO/configuration.webdriverio.js');
-   require('./scenario/FO/buy_product.webdriverio.js')
+    // Test case n°1 = Check the creation of an Upela account
+   // require('./scenario/BO/create_webservice.webdriverio.js');
+    //require('./scenario/BO/create_compte_upela.webdriverio.js')
+
+
+    // Test case n°2 = Configuring the Upela account with prestashop
+	// require('./scenario/FO/buy_product.webdriverio');
+    require('./scenario/BO/create_webservice.webdriverio.js');
+    require('./scenario/BO/config_compte_upela.webdriverio.js');
+
 
     // uninstall the paypal module
     // require('./scenario/BO/uninstall_module.js');

@@ -15,30 +15,30 @@ describe('The Purchase of a product', function(){
 
     after(common.after);
 
-    it('Open the shop ', function(done){
+    it('Open the shop and loggin FO', function(done){
         global.fctname= this.test.title;
         this.client
             .url('http://' + URL)
             .waitForExist(this.selector.access_loginFO, 90000)
             .click(this.selector.access_loginFO)
             .waitForExist(this.selector.loginFO, 90000)
-
+            .click(this.selector.login_btnFO)
+            .pause(3000)
             .call(done);
     });
 
-
-
-   describe('Buying product', function(done){
+    describe('Buying product', function(done){
         it('should go to the First product details', function(done){
             global.fctname= this.test.title;
             this.client
                 .waitForExist(this.selector.home_logo_url, 9000)
                 .click(this.selector.home_logo_url)
-                .waitForExist(this.selector.all_product, 9000)
-                .moveToObject(this.selector.all_product)
-                .click(this.selector.all_product)
+
+
+
                 .waitForExist(this.selector.First_product, 90000)
                 .click(this.selector.First_product)
+
                 .waitForExist(this.selector.add_to_cart_lifestyle, 90000)
                 .click(this.selector.add_to_cart_lifestyle)
                 .pause(3000)
@@ -55,11 +55,11 @@ describe('The Purchase of a product', function(){
                 .waitForExist(this.selector.command_button_checkout, 90000)
                 .click(this.selector.command_button_checkout)
 
-                .waitForExist('//*[@id="checkout-personal-information-step"]/div/ul/li[3]/a', 90000)
-                .click('//*[@id="checkout-personal-information-step"]/div/ul/li[3]/a')
+                .waitForExist('//!*[@id="checkout-personal-information-step"]/div/ul/li[3]/a', 90000)
+                .click('//!*[@id="checkout-personal-information-step"]/div/ul/li[3]/a')
 
-                .setValue('//*[@id="login-form"]/section/div[1]/div/input', 'pub@prestashop.com')
-                .setValue('//*[@id="login-form"]/section/div[2]/div/div[2]/input', '123456789')
+                .setValue('//!*[@id="login-form"]/section/div[1]/div/input', 'pub@prestashop.com')
+                .setValue('//!*[@id="login-form"]/section/div[2]/div/div[2]/input', '123456789')
 
 
                 .waitForExist(this.selector.login_btnFO, 90000)
@@ -95,7 +95,7 @@ describe('The Purchase of a product', function(){
                 .click(this.selector.checkout_step4_order)
                 .call(done);
         });
-    });
+  });
 
     describe('Log out in Front Office', function(done){
         it('should logout successfully in FO', function(done){

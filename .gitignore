@@ -4,4 +4,5 @@ SEOImage_module/node_modules/*
 prestafraud_module/node_modules/*
 Paypal_module/node_modules/*
 Mailchimp_module/node_modules/*
+Upela_module/node_modules/*
 .idea/*
