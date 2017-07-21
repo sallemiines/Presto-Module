@@ -15,8 +15,6 @@ describe('Test case n°2 = Configuring the Upela account with prestashop', funct
 
     after(common.after);
 
-
-
     describe('Log in in Back Office', function (done) {
         it('should log in successfully in BO', function (done) {
             this.client
@@ -31,7 +29,6 @@ describe('Test case n°2 = Configuring the Upela account with prestashop', funct
         });
     });
 
-
     describe(' Upela Shop configuration', function (done) {
 
         it('Go to " Mes Boutiques " ', function (done) {
@@ -45,7 +42,6 @@ describe('Test case n°2 = Configuring the Upela account with prestashop', funct
                 .call(done);
         });
 
-
         it('Go to " Platforme " ', function (done) {
             this.client
                 .waitForExist(this.selector.platforme, 90000)
@@ -55,7 +51,6 @@ describe('Test case n°2 = Configuring the Upela account with prestashop', funct
                 .click(this.selector.next_btn_upela)
                 .call(done);
         });
-
 
         it('Go to " Identifiants " ', function (done) {
             this.client
@@ -69,7 +64,6 @@ describe('Test case n°2 = Configuring the Upela account with prestashop', funct
                 .click(this.selector.next_step_upela)
                 .call(done);
         });
-
 
         it('Go to " Informations de la boutique " ', function (done) {
             this.client
@@ -100,12 +94,11 @@ describe('Test case n°2 = Configuring the Upela account with prestashop', funct
                 .click(this.selector.save_upela_btn)
 
                 .getText('//*[@id="main"]/div[2]').then(function(text) {
-                 if(text != "La boutique a été enregistrée" ){
-                      done(new Error("Notification Prestafraud dosen't exist "));
-                  }
-                })
+                     if(text != "La boutique a été enregistrée" ){
+                          done(new Error("Notification Prestafraud dosen't exist "));
+                     }
+                 })
                 .call(done);
-
         });
 
     });
