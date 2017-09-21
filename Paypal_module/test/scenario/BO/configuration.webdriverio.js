@@ -94,7 +94,4 @@ describe('Test case n°1 = Enable payment with a Paypal account (sandbox)', func
                 .call(done)
         });
     });
-
-
-
 });

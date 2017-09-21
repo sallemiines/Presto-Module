@@ -24,8 +24,8 @@ describe('Allscenario', function(){
     // require('./scenario/BO/install_module.js');
 
     // Test case n°1 = Check the default configuration
-    //require('./scenario/BO/configuration.webdriverio.js');
-   require('./scenario/FO/buy_product.webdriverio.js')
+    require('./scenario/BO/configuration.webdriverio.js');
+    require('./scenario/FO/buy_product.webdriverio.js')
 
     // uninstall the paypal module
     // require('./scenario/BO/uninstall_module.js');

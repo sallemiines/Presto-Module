@@ -24,7 +24,7 @@
     "parsed-url": "0.0.0",
     "q": "^1.4",
     "req": "^0.1",
-    "rgb-hex": "^2.1.0",
+
     "should": "^9.0",
     "webdriverio": "^4.0",
     "window": "^1.0"
