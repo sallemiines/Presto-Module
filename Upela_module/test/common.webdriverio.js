@@ -41,8 +41,8 @@ function initCommands(client) {
 		client
 			.url('https://' + URL + '/backoffice/')
 			.waitForExist(this.selector.login, 90000)
-            .setValue(this.selector.login, 'basma.yangui@prestashop.com')
-            .setValue(this.selector.password, 'barbar2017')
+            .setValue(this.selector.login, 'remi.gaillard@prestashop.com')
+            .setValue(this.selector.password, 'abcd1234')
             .click(this.selector.login_btn)
             .waitForExist(this.selector.menu, 90000)
 			.call(cb);
@@ -94,12 +94,12 @@ module.exports = {
 				client = webdriverio
 					.remote(options2)
 					.init()
-					.windowHandleMaximize()			
+                    .windowHandleSize({width: 1280, height: 1024});
 			}else{
             client = webdriverio
 					.remote(options)
 					.init()
-					.windowHandleMaximize()			
+                    .windowHandleSize({width: 1280, height: 1024});
 			}
             initCommands(client);
 

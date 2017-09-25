@@ -11,6 +11,7 @@ global.browser = argv.browser;
 global.saucelabs = argv.SAUCELABS;
 global._projectdir = path.join(__dirname, '..', '..');
 global.product_id=new Date().getTime();
+global.email_id=new Date().getTime();
 global.new_customer_email = 'pub' + date_time + '@prestashop.com';
 global.my_src_image1 = "";
 global.my_src_image2 = "";
@@ -53,6 +54,20 @@ module.exports = {
 
 
 	 //BO
+
+        webservice_serach_input:'//*[@id="form-webservice_account"]/div/div[2]/table/thead/tr[2]/th[3]/input',
+        webservice_search_button:'//*[@id="submitFilterButtonwebservice_account"]',
+        Upela_webservice:'//*[@id="form-webservice_account"]/div/div[2]/table/tbody/tr/td[2]',
+        compte_create:'//*[@id="home_form"]/div[1]/div/div/div[2]/a[1]',
+        prod_mode:'//*[@id="fieldset_0"]/div[1]/div/div/span/label[1]',
+        go_to_UPELA:'//*[@id="home_form"]/div[1]/div/div/div[2]/div/a',
+        account_creation_success:'//*[@id="content"]/div[5]',
+        shop_creation_success:'//*[@id="content"]/div[6]',
+        nbr_module:'//*[@id="main-div"]/div[3]/div[2]/div/div[2]/div/div[7]/span[1]',
+        mes_boutique_button:'//*[@id="main"]/div[2]/div[2]/div/ul/li[2]/a',
+        shop_added_upela:'//*[@id="store_table"]/tbody/tr/td[1]',
+
+
 		login: '#email',
 		password: '#passwd',
 		login_btn: '[name="submitLogin"]',
@@ -94,7 +109,8 @@ module.exports = {
 		//order_reference: '#content > div.row > div > div:nth-child(5) > div.col-lg-7 > div:nth-child(1) > div.panel-heading > span:nth-child(2)',
 		order_reference: '((//div[@class="panel-heading"])[1]/span)[1]',
 		modules_menu: '#subtab-AdminParentModulesSf',
-		modules_search: '.pstaggerAddTagInput.module-tags-input',
+        modules_search: 'div.pstaggerAddTagWrapper > input',
+        modules_search_button: '.btn.btn-primary.pull-right.search-button',
         modules_config_button: '//*[@id="modules-list-container-native"]/div[2]/div/div/div[5]/div[2]/form/button',
 		modules_page_loaded: '.module-search-result-wording',
 		modules_installed: '(//div[@class="page-head-tabs"]/a)[2]',
@@ -143,7 +159,6 @@ module.exports = {
         compte_web_service_page:'//*[@id="fieldset_0"]/div[1]',
         webservice_generation:'//*[@id="fieldset_0"]/div[2]/div[1]/div/div/div[2]/button',
         active_webservice:'//*[@id="fieldset_0"]/div[2]/div[3]/div/span/label[1]',
-        modules_search_button:'//*[@id="main-div"]/div[3]/div/div/div[2]/div/div[5]/div/div[2]/div/span/i',
         adress_permission:'//*[@id="fieldset_0"]/div[2]/div[4]/div/table/tbody/tr[2]/td[3]/input',
         carrier_permission:'//*[@id="fieldset_0"]/div[2]/div[4]/div/table/tbody/tr[3]/td[3]/input',
         config_permission:'//*[@id="fieldset_0"]/div[2]/div[4]/div/table/tbody/tr[8]/td[3]/input',
@@ -160,8 +175,8 @@ module.exports = {
         save_webservice:'//*[@id="webservice_account_form_submit_btn"]',
         webservice_id:'//*[@id="form-webservice_account"]/div/div[2]/table/tbody/tr/td[1]',
         multi_option_btn:'//*[@id="modules-list-container-all"]/div/div/div/div[5]/div[2]/button',
-        config_btn:'//*[@id="modules-list-container-all"]/div/div/div/div[5]/div[2]/div/li[5]/form/button',
-        compte_create:'//*[@id="home_form"]/div[1]/div/div/div[2]/a[1]',
+        config_btn:'//*[@id="modules-list-container-all"]/div[1]/div/div/div[5]/div[2]/form/button',
+
         name_upla:'//*[@id="firstname"]',
         last_name_upela:'//*[@id="lastname"]',
         email_upela:'//*[@id="email"]',
