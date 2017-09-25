@@ -19,6 +19,79 @@ global.indexofterms = 0;
 global.webservice_id='';
 module.exports = {
     selector: {
+            BO:{
+                AdvancedParametersPage:{
+                    menu:'//*[@id="subtab-AdminAdvancedParameters"]/a',
+                    Webservice:'//*[@id="subtab-AdminWebservice"]/a',
+                    WebserviceOption:{
+                        search_input:'//*[@id="form-webservice_account"]/div/div[2]/table/thead/tr[2]/th[3]/input',
+                        search_button:'//*[@id="submitFilterButtonwebservice_account"]',
+                        Upela_webservice:'//*[@id="form-webservice_account"]/div/div[2]/table/tbody/tr/td[2]',
+                    },
+                },
+                ModulesPage: {
+                    modules_subtab: '#subtab-AdminParentModulesSf',
+                    search_input: 'div.pstaggerAddTagWrapper > input',
+                    search_button: '.btn.btn-primary.pull-right.search-button',
+                    page_loaded: '.module-search-result-wording',
+                    installed_modules_tabs: '(//div[@class="page-head-tabs"]/a)[2]',
+                    module_number_span: '[class="module-sorting-search-wording"]',
+                    number_of_module_found:'//*[@id="main-div"]/div[3]/div[2]/div/div[2]/div/div[7]/span[1]',
+                    module_tech_name: '//div[@data-tech-name="' + module_tech_name + '" and not(@style)]',
+                    install_module_btn: '//div[@data-tech-name="' + module_tech_name + '" and not(@style)]//button[@data-confirm_modal="module-modal-confirm-' + module_tech_name + '-install"]',
+                    uninstall_module_list: '//div[@data-tech-name="' + module_tech_name + '" and not(@style)]//button[@class="btn btn-primary-outline  dropdown-toggle"]',
+                    uninstall_module_btn: '//div[@data-tech-name="' + module_tech_name + '" and not(@style)]//button[@class="dropdown-item module_action_menu_uninstall"]',
+                    modal_confirm_uninstall: '//*[@id="module-modal-confirm-' + module_tech_name + '-uninstall" and @class="modal modal-vcenter fade in"]//a[@class="btn btn-primary uppercase module_action_modal_uninstall"]',
+                    module_menu_btn: '[class="btn btn-primary-outline  dropdown-toggle"]',
+                    enable_module_btn: '[class="dropdown-item module_action_menu_enable"]',
+                    configuration_button:'//*[@id="modules-list-container-all"]/div[1]/div/div/div[5]/div[2]/form/button'
+                },
+                UpelaModulePage:{
+                    production_mode_button:'//*[@id="fieldset_0"]/div[1]/div/div/span/label[1]',
+                    create_account_button:'//*[@id="home_form"]/div[1]/div/div/div[2]/a[1]',
+                    name_input:'//*[@id="firstname"]',
+                    last_name_input:'//*[@id="lastname"]',
+                    mail_input:'//*[@id="email"]',
+                    mobile_number_input:'//*[@id="phone"]',
+                    password_input:'//*[@id="password"]',
+                    confirm_password_input:'//*[@id="passwordcheck"]',
+                    company_subtab:'//*[@id="fieldset_0"]/div[2]/ul/li[2]/a',
+                }
+            },
+
+
+
+
+
+
+
+        societer_name:'//*[@id="company_name"]',
+        professional_address:'//*[@id="company"]/div[2]/div/span/label[1]',
+        first_adresse:'//*[@id="company_address_1"]',
+        pays_upela_compte:'//*[@id="company_country"]',
+        pays_FR:'//*[@id="company_country"]/option[75]',
+        postal_code:'//*[@id="company_zipcode"]',
+        ville:'//*[@id="company_city"]',
+        immatriculation:'//*[@id="company_vat"]',
+        shop_tab:'//*[@id="fieldset_0"]/div[2]/ul/li[3]/a',
+        shop_name_upela:'//*[@id="store_name"]',
+        profissonnal_addresse:'//*[@id="store"]/div[2]/div/span/label[1]',
+        shop_adresse:'//*[@id="store_address_1"]',
+        shop_pays:'//*[@id="store_country"]',
+        shop_FR:'//*[@id="store_country"]/option[75]',
+        shop_postale_code:'//*[@id="store_zipcode"]',
+        shop_ville:'//*[@id="store_city"]',
+        webservice_key_shop:'//*[@id="webservicekey"]',
+        save_adding_shop:'//*[@id="configuration_form_submit_btn"]',
+
+
+
+
+
+
+
+
+
 	//Installation
 	    language:'//*[@id="langList"]',
 	    next_step:'//*[@id="btNext"]',
@@ -55,15 +128,14 @@ module.exports = {
 
 	 //BO
 
-        webservice_serach_input:'//*[@id="form-webservice_account"]/div/div[2]/table/thead/tr[2]/th[3]/input',
-        webservice_search_button:'//*[@id="submitFilterButtonwebservice_account"]',
-        Upela_webservice:'//*[@id="form-webservice_account"]/div/div[2]/table/tbody/tr/td[2]',
-        compte_create:'//*[@id="home_form"]/div[1]/div/div/div[2]/a[1]',
-        prod_mode:'//*[@id="fieldset_0"]/div[1]/div/div/span/label[1]',
+
+
+
+
         go_to_UPELA:'//*[@id="home_form"]/div[1]/div/div/div[2]/div/a',
         account_creation_success:'//*[@id="content"]/div[5]',
         shop_creation_success:'//*[@id="content"]/div[6]',
-        nbr_module:'//*[@id="main-div"]/div[3]/div[2]/div/div[2]/div/div[7]/span[1]',
+
         mes_boutique_button:'//*[@id="main"]/div[2]/div[2]/div/ul/li[2]/a',
         shop_added_upela:'//*[@id="store_table"]/tbody/tr/td[1]',
 
@@ -108,11 +180,11 @@ module.exports = {
 		order_total: '#total_order > td.amount.text-right.nowrap',
 		//order_reference: '#content > div.row > div > div:nth-child(5) > div.col-lg-7 > div:nth-child(1) > div.panel-heading > span:nth-child(2)',
 		order_reference: '((//div[@class="panel-heading"])[1]/span)[1]',
-		modules_menu: '#subtab-AdminParentModulesSf',
-        modules_search: 'div.pstaggerAddTagWrapper > input',
-        modules_search_button: '.btn.btn-primary.pull-right.search-button',
+
+
+
         modules_config_button: '//*[@id="modules-list-container-native"]/div[2]/div/div/div[5]/div[2]/form/button',
-		modules_page_loaded: '.module-search-result-wording',
+
 		modules_installed: '(//div[@class="page-head-tabs"]/a)[2]',
 		modules_validate_uninstall: '//a[@class="btn btn-primary uppercase module_action_modal_uninstall"]',
 		close_sf_toolbar:'//a[@class="hide-button"]',
@@ -149,8 +221,9 @@ module.exports = {
 		transfer_bancaire_type:'//*[@id="prestashop_trust"]/div[6]/table/tbody/tr[2]/td[2]/select',
 		paypal_type:'//*[@id="prestashop_trust"]/div[6]/table/tbody/tr[3]/td[2]/select',
 
-        advanced_parameters:'//*[@id="subtab-AdminAdvancedParameters"]/a',
-        webservice_param:'//*[@id="subtab-AdminWebservice"]/a',
+
+
+
         webserice_activation:'//*[@id="conf_id_PS_WEBSERVICE"]/div[1]/span/label[1]',
         cgi_activation:'//*[@id="conf_id_PS_WEBSERVICE_CGI_HOST"]/div[1]/span/label[1]',
         parametre_websrvice_activation:'//*[@id="webservice_account_fieldset_general"]/div[3]/button',
@@ -175,33 +248,7 @@ module.exports = {
         save_webservice:'//*[@id="webservice_account_form_submit_btn"]',
         webservice_id:'//*[@id="form-webservice_account"]/div/div[2]/table/tbody/tr/td[1]',
         multi_option_btn:'//*[@id="modules-list-container-all"]/div/div/div/div[5]/div[2]/button',
-        config_btn:'//*[@id="modules-list-container-all"]/div[1]/div/div/div[5]/div[2]/form/button',
 
-        name_upla:'//*[@id="firstname"]',
-        last_name_upela:'//*[@id="lastname"]',
-        email_upela:'//*[@id="email"]',
-        mobile_number:'//*[@id="phone"]',
-        password_upela:'//*[@id="password"]',
-        confirm_password:'//*[@id="passwordcheck"]',
-        company_tab:'//*[@id="fieldset_0"]/div[2]/ul/li[2]/a',
-        societer_name:'//*[@id="company_name"]',
-        professional_address:'//*[@id="company"]/div[2]/div/span/label[1]',
-        first_adresse:'//*[@id="company_address_1"]',
-        pays_upela_compte:'//*[@id="company_country"]',
-        pays_FR:'//*[@id="company_country"]/option[75]',
-        postal_code:'//*[@id="company_zipcode"]',
-        ville:'//*[@id="company_city"]',
-        immatriculation:'//*[@id="company_vat"]',
-        shop_tab:'//*[@id="fieldset_0"]/div[2]/ul/li[3]/a',
-        shop_name_upela:'//*[@id="store_name"]',
-        profissonnal_addresse:'//*[@id="store"]/div[2]/div/span/label[1]',
-        shop_adresse:'//*[@id="store_address_1"]',
-        shop_pays:'//*[@id="store_country"]',
-        shop_FR:'//*[@id="store_country"]/option[75]',
-        shop_postale_code:'//*[@id="store_zipcode"]',
-        shop_ville:'//*[@id="store_city"]',
-        webservice_key_shop:'//*[@id="webservicekey"]',
-        save_adding_shop:'//*[@id="configuration_form_submit_btn"]',
 
 
 

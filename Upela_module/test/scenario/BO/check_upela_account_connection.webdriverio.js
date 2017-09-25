@@ -1,7 +1,7 @@
 'use strict';
 var should = require('should');
-var common = require('../../common.webdriverio');
-var globals = require('../../globals.webdriverio.js');
+var common = require('../../../../common/common.webdriverio');
+var globals = require('../../../../common/globals.webdriverio.js');
 
 global.webservice_key='';
 
@@ -26,23 +26,24 @@ describe('Test case n°2 = check upela account connection', function () {
 
     describe('Account connection', function (done) {
 
-        it('should go to the module', function (done) {
+
+        it('should go to the module configuration', function (done) {
             this.client
                 .pause(5000)
-                .click(this.selector.modules_menu)
-                .waitForExist(this.selector.modules_page_loaded, 90000)
-                .waitForExist(this.selector.modules_search, 90000)
-                .setValue(this.selector.modules_search, "upela")
-                .waitForExist(this.selector.modules_search_button, 90000)
-                .click(this.selector.modules_search_button)
-                .getText(this.selector.nbr_module).then(function (text) {
-                    global.nbr = text.indexOf('0');
-                    if ((global.nbr != -1)||(global.nbr == 0)){
-                        done(new Error('The module you are searching for does not exist!'));
-                    }
-                })
-                .waitForExist(this.selector.config_btn, 90000)
-                .click(this.selector.config_btn)
+                .click(this.selector.BO.ModulesPage.modules_subtab)
+                .waitForExist(this.selector.BO.ModulesPage.page_loaded, 90000)
+                .waitForExist(this.selector.BO.ModulesPage.search_input, 90000)
+                .setValue(this.selector.BO.ModulesPage.search_input, "upela")
+                .waitForExist(this.selector.BO.ModulesPage.search_button, 90000)
+                .click(this.selector.BO.ModulesPage.search_button)
+                .getText(this.selector.BO.ModulesPage.number_of_module_found).then(function (text) {
+                global.nbr = text.indexOf('0');
+                if ((global.nbr != -1)||(global.nbr == 0)){
+                    done(new Error('The module you are searching for does not exist!'));
+                }
+            })
+                .waitForExist(this.selector.BO.ModulesPage.configuration_button, 90000)
+                .click(this.selector.BO.ModulesPage.configuration_button)
                 .call(done);
         });
 

@@ -1,7 +1,7 @@
 'use strict';
 var should = require('should');
-var common = require('../../common.webdriverio');
-var globals = require('../../globals.webdriverio.js');
+var common = require('../../../../common/common.webdriverio');
+var globals = require('../../../../common/globals.webdriverio.js');
 
 global.webservice_key='';
 
@@ -19,7 +19,7 @@ describe('Test case n°1 = check account creation', function () {
         it('should log in successfully in BO', function (done) {
             this.client
                 .signinBO()
-                .waitForExist(this.selector.menu, 90000)
+                .waitForExist(this.selector.BO.Common.menu, 90000)
                 .call(done);
         });
     });
@@ -29,20 +29,20 @@ describe('Test case n°1 = check account creation', function () {
 
         it('should go to boutique webservice parameter page', function (done) {
             this.client
-                .waitForExist(this.selector.advanced_parameters, 90000)
-                .moveToObject(this.selector.advanced_parameters)
-                .waitForExist(this.selector.webservice_param, 90000)
-                .click(this.selector.webservice_param)
+                .waitForExist(this.selector.BO.AdvancedParametersPage.menu, 90000)
+                .moveToObject(this.selector.BO.AdvancedParametersPage.menu)
+                .waitForExist(this.selector.BO.AdvancedParametersPage.Webservice, 90000)
+                .click(this.selector.BO.AdvancedParametersPage.Webservice)
                 .call(done);
         });
 
         it('Search for Upela Web service and copy it', function (done) {
             this.client
-                .waitForExist(this.selector.webservice_serach_input, 90000)
-                .setValue(this.selector.webservice_serach_input, 'upela')
-                .waitForExist(this.selector.webservice_search_button, 90000)
-                .click(this.selector.webservice_search_button)
-                .getText(this.selector.Upela_webservice).then(function(text) {
+                .waitForExist(this.selector.BO.AdvancedParametersPage.WebserviceOption.search_input, 90000)
+                .setValue(this.selector.BO.AdvancedParametersPage.WebserviceOption.search_input, 'upela')
+                .waitForExist(this.selector.BO.AdvancedParametersPage.WebserviceOption.search_button, 90000)
+                .click(this.selector.BO.AdvancedParametersPage.WebserviceOption.search_button)
+                .getText(this.selector.BO.AdvancedParametersPage.WebserviceOption.Upela_webservice).then(function(text) {
                     global.webservice_key = text;
                 })
                 .call(done);
@@ -55,20 +55,20 @@ describe('Test case n°1 = check account creation', function () {
         it('should go to the module configuration', function (done) {
             this.client
                 .pause(5000)
-                .click(this.selector.modules_menu)
-                .waitForExist(this.selector.modules_page_loaded, 90000)
-                .waitForExist(this.selector.modules_search, 90000)
-                .setValue(this.selector.modules_search, "upela")
-                .waitForExist(this.selector.modules_search_button, 90000)
-                .click(this.selector.modules_search_button)
-                .getText(this.selector.nbr_module).then(function (text) {
+                .click(this.selector.BO.ModulesPage.modules_subtab)
+                .waitForExist(this.selector.BO.ModulesPage.page_loaded, 90000)
+                .waitForExist(this.selector.BO.ModulesPage.search_input, 90000)
+                .setValue(this.selector.BO.ModulesPage.search_input, "upela")
+                .waitForExist(this.selector.BO.ModulesPage.search_button, 90000)
+                .click(this.selector.BO.ModulesPage.search_button)
+                .getText(this.selector.BO.ModulesPage.number_of_module_found).then(function (text) {
                      global.nbr = text.indexOf('0');
                     if ((global.nbr != -1)||(global.nbr == 0)){
                         done(new Error('The module you are searching for does not exist!'));
                     }
                 })
-                .waitForExist(this.selector.config_btn, 90000)
-                .click(this.selector.config_btn)
+                .waitForExist(this.selector.BO.ModulesPage.configuration_button, 90000)
+                .click(this.selector.BO.ModulesPage.configuration_button)
                 .call(done);
         });
 
@@ -77,22 +77,22 @@ describe('Test case n°1 = check account creation', function () {
             it('account settings', function (done) {
                 this.client
                     .pause(1000)
-                    .waitForExist(this.selector.prod_mode, 90000)
-                    .click(this.selector.prod_mode)
-                    .waitForExist(this.selector.compte_create, 90000)
-                    .click(this.selector.compte_create)
-                    .waitForExist(this.selector.name_upla, 90000)
-                    .setValue(this.selector.name_upla, "Demo")
-                    .waitForExist(this.selector.last_name_upela, 90000)
-                    .setValue(this.selector.last_name_upela, "Demo")
-                    .waitForExist(this.selector.email_upela, 90000)
-                    .setValue(this.selector.email_upela, "mail"+email_id+"@prestashop.com")
-                    .waitForExist(this.selector.mobile_number, 90000)
-                    .setValue(this.selector.mobile_number, "6 10 00 10 23")
-                    .waitForExist(this.selector.password_upela, 90000)
-                    .setValue(this.selector.password_upela, "prestashop_demo")
-                    .waitForExist(this.selector.confirm_password, 90000)
-                    .setValue(this.selector.confirm_password, "prestashop_demo")
+                    .waitForExist(this.selector.BO.UpelaModulePage.production_mode_button, 90000)
+                    .click(this.selector.BO.UpelaModulePage.production_mode_button)
+                    .waitForExist(this.selector.BO.UpelaModulePage.create_account_button, 90000)
+                    .click(this.selector.BO.UpelaModulePage.create_account_button)
+                    .waitForExist(this.selector.BO.UpelaModulePage.name_input, 90000)
+                    .setValue(this.selector.BO.UpelaModulePage.name_input, "Demo")
+                    .waitForExist(this.selector.BO.UpelaModulePage.last_name_input, 90000)
+                    .setValue(this.selector.BO.UpelaModulePage.last_name_input, "Demo")
+                    .waitForExist(this.selector.BO.UpelaModulePage.mail_input, 90000)
+                    .setValue(this.selector.BO.UpelaModulePage.mail_input, "mail"+email_id+"@prestashop.com")
+                    .waitForExist(this.selector.BO.UpelaModulePage.mobile_number_input, 90000)
+                    .setValue(this.selector.BO.UpelaModulePage.mobile_number_input, "6 10 00 10 23")
+                    .waitForExist(this.selector.BO.UpelaModulePage.password_input, 90000)
+                    .setValue(this.selector.BO.UpelaModulePage.password_input, "prestashop_demo")
+                    .waitForExist(this.selector.BO.UpelaModulePage.confirm_password_input, 90000)
+                    .setValue(this.selector.BO.UpelaModulePage.confirm_password_input, "prestashop_demo")
                     .call(done);
 
             });
@@ -100,8 +100,9 @@ describe('Test case n°1 = check account creation', function () {
             it('company settings', function (done) {
 
                 this.client
-                    .waitForExist(this.selector.company_tab, 90000)
-                    .click(this.selector.company_tab)
+                    .waitForExist(this.selector.BO.UpelaModulePage.company_subtab, 90000)
+                    .click(this.selector.BO.UpelaModulePage.company_subtab)
+
                     .waitForExist(this.selector.professional_address, 90000)
                     .click(this.selector.professional_address)
                     .waitForExist(this.selector.first_adresse, 90000)

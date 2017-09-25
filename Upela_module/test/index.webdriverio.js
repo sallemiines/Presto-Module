@@ -1,6 +1,6 @@
 'use strict';
 var should = require('should');
-var common = require('./common.webdriverio');
+var common = require('../../common/common.webdriverio');
 
 
 describe('Allscenario', function(){
@@ -18,7 +18,7 @@ describe('Allscenario', function(){
 	});
 
     // Test case n°1 = Check the creation of an Upela account
-  //  require('./scenario/BO/check_account_creation.webdriverio.js');
+    require('./scenario/BO/check_account_creation.webdriverio.js');
 
 
     // Test case n°2 = check upela account connection
