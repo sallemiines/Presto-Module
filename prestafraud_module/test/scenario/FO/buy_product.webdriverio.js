@@ -20,9 +20,9 @@ describe('The Purchase of a product', function(){
                 .url('http://' + URL)
                 .waitForExist(this.selector.FO.AccessPage.access_loginFO, 90000)
                 .click(this.selector.FO.AccessPage.access_loginFO)
-                .waitForExist(this.selector.FO.AccessPage.loginFO, 90000)
-                .setValue(this.selector.FO.AccessPage.loginFO, 'pub@prestashop.com')
-                .setValue(this.selector.FO.AccessPage.passwordFO, '123456789')
+                .waitForExist(this.selector.FO.AccessPage.loginFO_input, 90000)
+                .setValue(this.selector.FO.AccessPage.loginFO_input, 'pub@prestashop.com')
+                .setValue(this.selector.FO.AccessPage.passwordFO_input, '123456789')
                 .click(this.selector.FO.AccessPage.loginFO_button)
                 .pause(3000)
                 .call(done);
@@ -38,9 +38,9 @@ describe('The Purchase of a product', function(){
 				.click(this.selector.FO.ProductPage.product_choice)
 				.waitForExist(this.selector.FO.ProductPage.product_image, 90000)
 				.pause(2000)
-				.click(this.selector.FO.ProductPage.validate_cart_choice)
+				.click(this.selector.FO.ProductPage.validate_cart_choice_button)
                 .pause(3000)
-                .click(this.selector.FO.ProductPage.modal_valid_btn)
+                .click(this.selector.FO.ProductPage.modal_valid_button)
 			    .call(done);
 		});
 
@@ -74,19 +74,23 @@ describe('The Purchase of a product', function(){
 		});
 
 		 it('should select the shipping method step-4', function(done){
-			 if (this.client.isExisting(this.selector.FO.Common.eupopup_closebutton)){
+			 if (this.client.isExisting(this.selector.FO.Common.cookie_banner_close_button)){
 				 this.client
-					 .click(this.selector.FO.Common.eupopup_closebutton);
+					 .click(this.selector.FO.Common.cookie_banner_close_button);
 			 };
 			this.client
 				.waitForExist(this.selector.FO.CartSummary.checkout_step4_cgv, 90000)
 				.click(this.selector.FO.CartSummary.checkout_step4_cgv)
-				.waitForExist(this.selector.FO.CartSummary.checkout_step4_order, 90000)
-				.pause(2000)
-				
-				.click(this.selector.FO.CartSummary.checkout_step4_order)
-				.pause(2000)
-			    .call(done);
+				.waitForExist(this.selector.FO.CartSummary.checkout_step4_order_button, 90000)
+				.click(this.selector.FO.CartSummary.checkout_step4_order_button)
+				.waitForExist(this.selector.FO.CartSummary.order_confirmation_text, 90000)
+				.getText(this.selector.FO.CartSummary.order_confirmation_text).then(function(text) {
+					if(text === "Votre commande est confirmée" ){
+						done(new Error("echec of the order "));
+				}
+			})
+
+			 	.call(done);
 		});
 
 	});

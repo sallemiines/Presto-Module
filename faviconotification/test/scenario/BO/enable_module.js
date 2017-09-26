@@ -30,7 +30,7 @@ describe('The Activation of the Favicon Notification Module', function () {
     describe('Enable module', function (done) {
         it('should go to modules page', function (done) {
             this.client
-                .pause(5000)
+                .waitForExist(this.selector.BO.ModulesPage.modules_subtab, 90000)
                 .click(this.selector.BO.ModulesPage.modules_subtab)
                 .waitForExist(this.selector.BO.ModulesPage.page_loaded, 90000)
                 .call(done);
@@ -55,16 +55,16 @@ describe('The Activation of the Favicon Notification Module', function () {
             else {
                 this.client
                     .waitForExist(this.selector.BO.ModulesPage.module_tech_name, 90000)
-                    .click(this.selector.BO.ModulesPage.module_menu_btn)
-                    .waitForExist(this.selector.BO.ModulesPage.enable_module_btn, 90000)
-                    .click(this.selector.BO.ModulesPage.enable_module_btn)
+                    .click(this.selector.BO.ModulesPage.module_menu_button)
+                    .waitForExist(this.selector.BO.ModulesPage.enable_module_button, 90000)
+                    .click(this.selector.BO.ModulesPage.enable_module_button)
                     .waitForExist(this.selector.BO.Common.close_validation_button, 90000)
                     .isVisible(this.selector.BO.Common.red_validation_notice).then(function (isVisible) {
-                    global.red_validation_is_visible = isVisible;
-                })
+                        global.red_validation_is_visible = isVisible;
+                    })
                     .isVisible(this.selector.BO.Common.green_validation_notice).then(function (isVisible) {
-                    green_validation_is_visible = isVisible;
-                })
+                        green_validation_is_visible = isVisible;
+                    })
                     .call(done);
             }
         });

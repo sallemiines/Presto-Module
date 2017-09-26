@@ -66,12 +66,12 @@ module.exports = {
                 number_of_module_found:'//*[@id="main-div"]/div[3]/div/div/div[2]/div/div[7]/span[1]',
                 configuration_button:'//*[@id="modules-list-container-all"]/div[1]/div/div/div[5]/div[2]/form/button',
                 module_tech_name: '//div[@data-tech-name="' + module_tech_name + '" and not(@style)]',
-                install_module_btn: '//div[@data-tech-name="' + module_tech_name + '" and not(@style)]//button[@data-confirm_modal="module-modal-confirm-' + module_tech_name + '-install"]',
+                install_module_button: '//div[@data-tech-name="' + module_tech_name + '" and not(@style)]//button[@data-confirm_modal="module-modal-confirm-' + module_tech_name + '-install"]',
                 uninstall_module_list: '//div[@data-tech-name="' + module_tech_name + '" and not(@style)]//button[@class="btn btn-primary-outline  dropdown-toggle"]',
-                uninstall_module_btn: '//div[@data-tech-name="' + module_tech_name + '" and not(@style)]//button[@class="dropdown-item module_action_menu_uninstall"]',
+                uninstall_module_button: '//div[@data-tech-name="' + module_tech_name + '" and not(@style)]//button[@class="dropdown-item module_action_menu_uninstall"]',
                 modal_confirm_uninstall: '//*[@id="module-modal-confirm-' + module_tech_name + '-uninstall" and @class="modal modal-vcenter fade in"]//a[@class="btn btn-primary uppercase module_action_modal_uninstall"]',
-                module_menu_btn: '[class="btn btn-primary-outline  dropdown-toggle"]',
-                enable_module_btn: '[class="dropdown-item module_action_menu_enable"]'
+                module_menu_button: '[class="btn btn-primary-outline  dropdown-toggle"]',
+                enable_module_button: '[class="dropdown-item module_action_menu_enable"]'
             },
 
             //Upela module selectorl
@@ -115,24 +115,25 @@ module.exports = {
             },
 
             //Module prestafraud
+            //PrestaFraudModulePage
             ModulePagePrestaFraud: {
-                config_module_btn:'//*[@id="modules-list-container-native"]/div/div/div/div[5]/div[2]/form/button',
-                create_account_btn:'//*[@id="trust_account_on"]',
-                agree_terms:'//*[@id="terms_and_conditions"]',
-                shop_email:'//*[@id="create_account"]/form/div[1]/input',
-                valid_compte_btn:'/*//*[@id="submitCreateAccount"]',
-                shop_id:'//*[@id="prestashop_trust"]/div[1]/input',
-                shop_key:'//*[@id="prestashop_trust"]/div[2]/input',
-                shop_activity:'//*[@id="prestashop_trust"]/div[4]/select',
-                livraison_type:'//*[@id="prestashop_trust"]/div[5]/table/tbody/tr[1]/td[2]/select',
-                module_payment:'//*[@id="prestashop_trust"]/div[6]/table/tbody/tr[1]/td[2]/select',
-                transfer_bancaire_type:'//*[@id="prestashop_trust"]/div[6]/table/tbody/tr[2]/td[2]/select',
-                paypal_type:'//*[@id="prestashop_trust"]/div[6]/table/tbody/tr[3]/td[2]/select',
-                prestashop_security_save:'//*[@id="prestashop_trust"]/center/input',
+                config_module_button:'//*[@id="modules-list-container-native"]/div/div/div/div[5]/div[2]/form/button',
+                create_account_button:'//*[@id="trust_account_on"]',
+                agree_terms_option:'//*[@id="terms_and_conditions"]',
+                shop_email_input:'//*[@id="create_account"]/form/div[1]/input',
+                valid_compte_button:'/*//*[@id="submitCreateAccount"]',
+                shop_id_input:'//*[@id="prestashop_trust"]/div[1]/input',
+                shop_key_input:'//*[@id="prestashop_trust"]/div[2]/input',
+                shop_activity_select:'//*[@id="prestashop_trust"]/div[4]/select',
+                livraison_type_select:'//*[@id="prestashop_trust"]/div[5]/table/tbody/tr[1]/td[2]/select',
+                module_payment_select:'//*[@id="prestashop_trust"]/div[6]/table/tbody/tr[1]/td[2]/select',
+                transfer_bancaire_type_select:'//*[@id="prestashop_trust"]/div[6]/table/tbody/tr[2]/td[2]/select',
+                paypal_type_select:'//*[@id="prestashop_trust"]/div[6]/table/tbody/tr[3]/td[2]/select',
+                prestashop_security_save_input:'//*[@id="prestashop_trust"]/center/input',
                 orders: '#subtab-AdminParentOrders',
                 orders_form: '#form-order',
-                First_order:'//*[@id="form-order"]/div/div[2]/table/tbody/tr[1]/td[12]/div/a',
-                Prestafraud_legand:'//*[@id="content"]/div[5]/div/fieldset/legend'
+                first_order:'//*[@id="form-order"]/div/div[2]/table/tbody/tr[1]/td[12]/div/a',
+                prestafraud_legand:'//*[@id="content"]/div[5]/div/fieldset/legend'
             }
         },
 
@@ -144,17 +145,17 @@ module.exports = {
                 favicon: '/html/head/link[2]',
 
                 desktop_login:'//*[@id="_desktop_logo"]/a',
-                eupopup_closebutton:'//*[@id="checkout"]/div/a'
+                cookie_banner_close_button:'//*[@id="checkout"]/div/a'
             },
 
             //Access page selectors
             AccessPage: {
                 logo_home_page: '.logo.img-responsive',
                 first_product_home_page: '.thumbnail.product-thumbnail',
-
+                
                 access_loginFO:'div.user-info > a',
-                loginFO: '//*[@id="login-form"]/section/div[1]/div[1]/input',
-                passwordFO: '//*[@id="login-form"]/section/div[2]/div[1]/div/input',
+                loginFO_input: '//*[@id="login-form"]/section/div[1]/div[1]/input',
+                passwordFO_input: '//*[@id="login-form"]/section/div[2]/div[1]/div/input',
                 loginFO_button: '//*[@id="login-form"]/footer/button',
                 logoutFO: '.logout'
             },
@@ -162,11 +163,11 @@ module.exports = {
             //Product page selectors
             ProductPage: {
                 add_to_cart_button: '.btn.btn-primary.add-to-cart',
-
+                
                 product_choice:'//*[@id="content"]/section[1]/div/article[1]/div/div[1]/h1/a',
                 product_image: '#content',
-                validate_cart_choice:'//*[@id="add-to-cart-or-refresh"]/div[2]/div[1]/div[2]/button',
-                modal_valid_btn:'//*[@id="blockcart-modal"]/div/div/div[2]/div/div[2]/div/div/a'
+                validate_cart_choice_button:'//*[@id="add-to-cart-or-refresh"]/div[2]/div[1]/div[2]/button',
+                modal_valid_button:'//*[@id="blockcart-modal"]/div/div/div[2]/div/div[2]/div/div/a'
             },
             
             //Cart summary selectors
@@ -176,7 +177,8 @@ module.exports = {
                 checkout_step3_continue_button: '//*[@id="js-delivery"]/button',
                 checkout_step4_payment: '//*[@id="payment-option-2"]',
                 checkout_step4_cgv: '//input[@id="conditions_to_approve[terms-and-conditions]"]',
-                checkout_step4_order: '#payment-confirmation >div > button',
+                checkout_step4_order_button: '#payment-confirmation >div > button',
+                order_confirmation_text:'#content-hook_order_confirmation > div > div > div > h3 > i'
             }
         },
 
