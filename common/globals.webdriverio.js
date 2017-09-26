@@ -9,7 +9,7 @@ global.URL = argv.URL;
 global.email = argv.EMAIL;
 global.password = argv.PWD;
 global.module_tech_name = 'faviconotification';
-
+global.module_tech_name_prestafraud = 'prestafraud';
 global.browser = argv.browser;
 global.saucelabs = argv.SAUCELABS;
 global._projectdir = path.join(__dirname, '..', '..');
@@ -112,6 +112,27 @@ module.exports = {
                 success_panel:'//*[@id="content"]/div[4]',
                 success_created_shop:'//*[@id="content"]/div[5]',
 
+            },
+
+            //Module prestafraud
+            ModulePagePrestaFraud: {
+                config_module_btn:'//*[@id="modules-list-container-native"]/div/div/div/div[5]/div[2]/form/button',
+                create_account_btn:'//*[@id="trust_account_on"]',
+                agree_terms:'//*[@id="terms_and_conditions"]',
+                shop_email:'//*[@id="create_account"]/form/div[1]/input',
+                valid_compte_btn:'/*//*[@id="submitCreateAccount"]',
+                shop_id:'//*[@id="prestashop_trust"]/div[1]/input',
+                shop_key:'//*[@id="prestashop_trust"]/div[2]/input',
+                shop_activity:'//*[@id="prestashop_trust"]/div[4]/select',
+                livraison_type:'//*[@id="prestashop_trust"]/div[5]/table/tbody/tr[1]/td[2]/select',
+                module_payment:'//*[@id="prestashop_trust"]/div[6]/table/tbody/tr[1]/td[2]/select',
+                transfer_bancaire_type:'//*[@id="prestashop_trust"]/div[6]/table/tbody/tr[2]/td[2]/select',
+                paypal_type:'//*[@id="prestashop_trust"]/div[6]/table/tbody/tr[3]/td[2]/select',
+                prestashop_security_save:'//*[@id="prestashop_trust"]/center/input',
+                orders: '#subtab-AdminParentOrders',
+                orders_form: '#form-order',
+                First_order:'//*[@id="form-order"]/div/div[2]/table/tbody/tr[1]/td[12]/div/a',
+                Prestafraud_legand:'//*[@id="content"]/div[5]/div/fieldset/legend'
             }
         },
 
@@ -120,18 +141,42 @@ module.exports = {
 
             //Common selectors
             Common: {
-                favicon: '/html/head/link[2]'
+                favicon: '/html/head/link[2]',
+
+                desktop_login:'//*[@id="_desktop_logo"]/a',
+                eupopup_closebutton:'//*[@id="checkout"]/div/a'
             },
 
             //Access page selectors
             AccessPage: {
                 logo_home_page: '.logo.img-responsive',
-                first_product_home_page: '.thumbnail.product-thumbnail'
+                first_product_home_page: '.thumbnail.product-thumbnail',
+
+                access_loginFO:'div.user-info > a',
+                loginFO: '//*[@id="login-form"]/section/div[1]/div[1]/input',
+                passwordFO: '//*[@id="login-form"]/section/div[2]/div[1]/div/input',
+                loginFO_button: '//*[@id="login-form"]/footer/button',
+                logoutFO: '.logout'
             },
 
             //Product page selectors
             ProductPage: {
-                add_to_cart_button: '.btn.btn-primary.add-to-cart'
+                add_to_cart_button: '.btn.btn-primary.add-to-cart',
+
+                product_choice:'//*[@id="content"]/section[1]/div/article[1]/div/div[1]/h1/a',
+                product_image: '#content',
+                validate_cart_choice:'//*[@id="add-to-cart-or-refresh"]/div[2]/div[1]/div[2]/button',
+                modal_valid_btn:'//*[@id="blockcart-modal"]/div/div/div[2]/div/div[2]/div/div/a'
+            },
+            
+            //Cart summary selectors
+            CartSummary:{
+                command_button_checkout: '//*[@id="main"]/div/div[2]/div[1]/div[3]/div/a',
+                checkout_step2_continue_button:'//*[@id="checkout-addresses-step"]/div/div/form/div[2]/button',
+                checkout_step3_continue_button: '//*[@id="js-delivery"]/button',
+                checkout_step4_payment: '//*[@id="payment-option-2"]',
+                checkout_step4_cgv: '//input[@id="conditions_to_approve[terms-and-conditions]"]',
+                checkout_step4_order: '#payment-confirmation >div > button',
             }
         },
 
