@@ -32,3 +32,4 @@ b)	How to launch tests
 -	URL: Front office URL of your prestashop website (without the “http://”)
 -	Email  : Admin email
 -	PWD : Admin password
+
