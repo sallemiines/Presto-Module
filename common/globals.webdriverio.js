@@ -107,7 +107,8 @@ module.exports = {
                 setting_subtab:'//*[@id="settings_form"]/div/div/div/form/div[3]/div[1]/div/button',
                 shop_creation_button:'//*[@id="settings_form"]/div[2]/div/div/div/div/div/a',
                 success_panel:'//*[@id="content"]/div[4]',
-                success_created_shop:'//*[@id="content"]/div[5]'
+                success_created_shop:'//*[@id="content"]/div[5]',
+
             }
         },
 
@@ -139,6 +140,7 @@ module.exports = {
             download_command_button:'//*[@id="main"]/div[2]/div[2]/div/div[2]/div[2]/a',
             succes_modal:'/html/body/div[2]/div[2]',
             success_message:'/html/body/div[2]/div[2]/div/div[2]/div/div',
+            second_shop_success:'/html/body/div[2]/div[2]/div/div[1]/div/div[1]'
         }
 
     },

@@ -18,7 +18,7 @@ describe('Test case n°2 = check upela account connection', function () {
     describe('Log in in Back Office', function (done) {
         it('should log in successfully in BO', function (done) {
             this.client
-                .signinBO()
+                .url('http://' + URL + '/backoffice/')
                 .waitForExist(this.selector.BO.Common.menu, 90000)
                 .call(done);
         });
@@ -38,33 +38,34 @@ describe('Test case n°2 = check upela account connection', function () {
                 .click(this.selector.BO.ModulesPage.search_button)
                 .getText(this.selector.BO.ModulesPage.number_of_module_found).then(function (text) {
                     global.nbr = text.indexOf('0');
-                    if ((global.nbr != -1)||(global.nbr == 0)){
+                    if ((global.nbr != -1)||(global.nbr === 0)){
                         done(new Error('The module you are searching for does not exist!'));
                     }
                 })
                 .waitForExist(this.selector.BO.ModulesPage.configuration_button, 90000)
                 .click(this.selector.BO.ModulesPage.configuration_button)
+                .pause(3000)
+                .waitForExist(this.selector.BO.UpelaModulePage.connexion_subtab, 90000)
+                .click(this.selector.BO.UpelaModulePage.connexion_subtab)
                 .call(done);
         });
 
         it('should go to the module connection tabs and disconnect ' , function (done) {
             this.client
-                .waitForExist(this.selector.BO.UpelaModulePage.connexion_subtab, 90000)
-                .click(this.selector.BO.UpelaModulePage.connexion_subtab)
                 .waitForExist(this.selector.BO.UpelaModulePage.disconnect_button, 90000)
                 .click(this.selector.BO.UpelaModulePage.disconnect_button)
-                .waitForExist(this.selector.BO.UpelaModulePage.connect_button)
+                .waitForExist(this.selector.BO.UpelaModulePage.connect_button, 90000)
                 .click(this.selector.BO.UpelaModulePage.connect_button)
                 .call(done)
         });
 
         it('should go to the module connection tabs and connect ' , function (done) {
             this.client
-                .pause(1000)
                 .waitForExist(this.selector.BO.UpelaModulePage.production_mode_button, 90000)
                 .click(this.selector.BO.UpelaModulePage.production_mode_button)
+                .pause(5000)
                 .waitForExist(this.selector.BO.UpelaModulePage.mail_input, 90000)
-                .setValue(this.selector.BO.UpelaModulePage.mail_input, global.email_upela)
+                .setValue(this.selector.BO.UpelaModulePage.mail_input,global.email_upela)
                 .waitForExist(this.selector.BO.UpelaModulePage.password_input, 90000)
                 .setValue(this.selector.BO.UpelaModulePage.password_input, "prestashop_demo")
                 .waitForExist(this.selector.BO.UpelaModulePage.setting_subtab, 90000)
@@ -72,9 +73,9 @@ describe('Test case n°2 = check upela account connection', function () {
                 .waitForExist(this.selector.BO.UpelaModulePage.success_panel, 90000)
                 .getText(this.selector.BO.UpelaModulePage.success_panel).then(function (text) {
                     if (text!='Connexion réussie !'){
-                    done(new Error('erreur de connexion'));
+                        done(new Error('erreur de connexion'));
                     }else
-                    done();
+                        done();
                 });
         });
 

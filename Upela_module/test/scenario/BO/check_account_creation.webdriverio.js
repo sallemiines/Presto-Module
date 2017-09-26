@@ -101,7 +101,6 @@ describe('Test case n°1 = check account creation', function () {
             });
 
             it('company settings', function (done) {
-
                 this.client
                     .waitForExist(this.selector.BO.UpelaModulePage.company_subtab, 90000)
                     .click(this.selector.BO.UpelaModulePage.company_subtab)
@@ -169,7 +168,7 @@ describe('Test case n°1 = check account creation', function () {
               it('upela Account and Store verification', function (done) {
                   this.client
                       .getTabIds().then(function (handles) {
-                          return this.switchTab(handles[handles.length - 1]);
+                          this.switchTab(handles[handles.length - 1]);
                       })
                       .waitForExist(this.selector.UPELASITE.title, 90000)
                       .waitForExist(this.selector.UPELASITE.mes_boutique_button, 90000)

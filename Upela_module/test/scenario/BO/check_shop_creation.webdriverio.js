@@ -3,7 +3,7 @@ var should = require('should');
 var common = require('../../../../common/common.webdriverio');
 var globals = require('../../../../common/globals.webdriverio.js');
 
-global.webservice_key='';
+//global.webservice_key='j4Pu357Oqy8EBCfra9ccyd3HsxcUSkFs';
 
 describe('Test case n°3 = check upela account connection', function () {
     common.initMocha.call(this);
@@ -18,8 +18,8 @@ describe('Test case n°3 = check upela account connection', function () {
     describe('Log in in Back Office', function (done) {
         it('should log in successfully in BO', function (done) {
             this.client
-                .signinBO()
-                .waitForExist(this.selector.menu, 90000)
+                .url('http://' + URL + '/backoffice/')
+                .waitForExist(this.selector.BO.Common.menu, 90000)
                 .call(done);
         });
     });
@@ -48,45 +48,46 @@ describe('Test case n°3 = check upela account connection', function () {
 
         it('should Create a Shop using an Upela account', function (done) {
             this.client
-                .waitForExist(this.selector.UpelaModulePage.connexion_subtab, 90000)
-                .click(this.selector.UpelaModulePage.connexion_subtab)
-                .waitForExist(this.selector.UpelaModulePage.shop_creation_button, 90000)
-                .click(this.selector.UpelaModulePage.shop_creation_button)
+                .waitForExist(this.selector.BO.UpelaModulePage.connexion_subtab, 90000)
+                .click(this.selector.BO.UpelaModulePage.connexion_subtab)
+                .waitForExist(this.selector.BO.UpelaModulePage.shop_creation_button, 90000)
+                .click(this.selector.BO.UpelaModulePage.shop_creation_button)
                 .call(done);
         });
 
-        it('shop settings', function (done) {
+       it('shop settings', function (done) {
             this.client
-                .waitForExist(this.selector.UpelaModulePage.name_input, 90000)
-                .setValue(this.selector.UpelaModulePage.name_input, "Demo")
-                .waitForExist(this.selector.UpelaModulePage.last_name_input, 90000)
-                .setValue(this.selector.UpelaModulePage.last_name_input, "PrestaShop")
-                .waitForExist(this.selector.UpelaModulePage.mail_input, 90000)
-                .setValue(this.selector.UpelaModulePage.mail_input,global.email_upela)
-                .waitForExist(this.selector.UpelaModulePage.mobile_number_input, 90000)
-                .setValue(this.selector.UpelaModulePage.mobile_number_input, "0123-456-789")
-                .waitForExist(this.selector.UpelaModulePage.shop_name_input, 90000)
-                .setValue(this.selector.UpelaModulePage.shop_name_input, "Presto")
-                .waitForExist(this.selector.UpelaModulePage.shop_adresse_input, 90000)
-                .setValue(this.selector.UpelaModulePage.shop_adresse_input, "31 rue du Louvre")
-                .waitForExist(this.selector.UpelaModulePage.shop_country, 90000)
-                .click(this.selector.UpelaModulePage.shop_country)
-                .click(this.selector.UpelaModulePage.shop_FR)
-                .waitForExist(this.selector.UpelaModulePage.shop_postale_code_input, 90000)
-                .setValue(this.selector.UpelaModulePage.shop_postale_code_input, "75005")
-                .waitForExist(this.selector.UpelaModulePage.shop_ville_input, 90000)
-                .setValue(this.selector.UpelaModulePage.shop_ville_input, "paris")
-                .waitForExist(this.selector.UpelaModulePage.webservice_input, 90000)
-                .setValue(this.selector.UpelaModulePage.webservice_input, webservice_key)
-                .waitForExist(this.selector.UpelaModulePage.save_shop_button,9000)
-                .click(this.selector.UpelaModulePage.save_shop_button)
-                .getText(this.selector.UpelaModulePage.success_created_shop).then(function (text) {
+                .waitForExist(this.selector.BO.UpelaModulePage.name_input, 90000)
+                .setValue(this.selector.BO.UpelaModulePage.name_input, "Demo")
+                .waitForExist(this.selector.BO.UpelaModulePage.last_name_input, 90000)
+                .setValue(this.selector.BO.UpelaModulePage.last_name_input, "PrestaShop")
+                .waitForExist(this.selector.BO.UpelaModulePage.mail_input, 90000)
+                .setValue(this.selector.BO.UpelaModulePage.mail_input,global.email_upela)
+                .waitForExist(this.selector.BO.UpelaModulePage.mobile_number_input, 90000)
+                .setValue(this.selector.BO.UpelaModulePage.mobile_number_input, "0123-456-789")
+                .waitForExist(this.selector.BO.UpelaModulePage.shop_name_input, 90000)
+                .setValue(this.selector.BO.UpelaModulePage.shop_name_input, "Presto")
+                .waitForExist(this.selector.BO.UpelaModulePage.shop_adresse_input, 90000)
+                .setValue(this.selector.BO.UpelaModulePage.shop_adresse_input, "31 rue du Louvre")
+                .waitForExist(this.selector.BO.UpelaModulePage.shop_country, 90000)
+                .click(this.selector.BO.UpelaModulePage.shop_country)
+                .click(this.selector.BO.UpelaModulePage.shop_FR)
+                .waitForExist(this.selector.BO.UpelaModulePage.shop_postale_code_input, 90000)
+                .setValue(this.selector.BO.UpelaModulePage.shop_postale_code_input, "75005")
+                .waitForExist(this.selector.BO.UpelaModulePage.shop_ville_input, 90000)
+                .setValue(this.selector.BO.UpelaModulePage.shop_ville_input, "paris")
+                .waitForExist(this.selector.BO.UpelaModulePage.webservice_input, 90000)
+                .setValue(this.selector.BO.UpelaModulePage.webservice_input, webservice_key)
+                .waitForExist(this.selector.BO.UpelaModulePage.save_shop_button,9000)
+                .click(this.selector.BO.UpelaModulePage.save_shop_button)
+                .waitForExist(this.selector.BO.UpelaModulePage.success_panel,9000)
+                .getText(this.selector.BO.UpelaModulePage.success_panel).then(function (text) {
                 if (text!='Boutique créée !'){
-                    done(new Error('Error when create a shop! '));
+                   done(new Error('Error when create a shop! '));
                 }
             })
-                .waitForExist(this.selector.UpelaModulePage.Upela_website_button, 90000)
-                .click(this.selector.UpelaModulePage.Upela_website_button)
+                .waitForExist(this.selector.BO.UpelaModulePage.Upela_website_button, 90000)
+                .click(this.selector.BO.UpelaModulePage.Upela_website_button)
                 .call(done);
         });
 
@@ -97,8 +98,8 @@ describe('Test case n°3 = check upela account connection', function () {
         it('Upela Account and Store verification', function (done) {
             this.client
                 .getTabIds().then(function (handles) {
-                return this.switchTab(handles[handles.length - 1]);
-            })
+                    return this.switchTab(handles[handles.length - 1]);
+                })
                 .waitForExist(this.selector.UPELASITE.title, 90000)
                 .waitForExist(this.selector.UPELASITE.mes_boutique_button, 5000)
                 .click(this.selector.UPELASITE.mes_boutique_button)
@@ -108,15 +109,13 @@ describe('Test case n°3 = check upela account connection', function () {
                 .click(this.selector.UPELASITE.download_command_button)
                 .waitForVisible(this.selector.UPELASITE.succes_modal, 3000)
                 .waitForExist(this.selector.UPELASITE.success_message, 5000)
-                .getText(this.selector.UPELASITE.success_message).then(function (text) {
-                if(text != "Les commandes ont été téléchargées avec succès." ){
-                    done(new Error("Orders have not been uploaded"));
-                }else
-                    done();
-            })
-
+                .getText(this.selector.UPELASITE.second_shop_success).then(function (text) {
+                    if(text != "Les commandes ont été téléchargées avec succès." ){
+                        done(new Error("Orders have not been uploaded"));
+                    }else
+                        done();
+                });
         });
-
     });
 
 });
