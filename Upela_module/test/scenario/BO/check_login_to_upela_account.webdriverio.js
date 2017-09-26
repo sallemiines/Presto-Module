@@ -19,7 +19,7 @@ describe('Test case n°2 = check upela account connection', function () {
         it('should log in successfully in BO', function (done) {
             this.client
                 .signinBO()
-                .waitForExist(this.selector.menu, 90000)
+                .waitForExist(this.selector.BO.Common.menu, 90000)
                 .call(done);
         });
     });
@@ -37,11 +37,11 @@ describe('Test case n°2 = check upela account connection', function () {
                 .waitForExist(this.selector.BO.ModulesPage.search_button, 90000)
                 .click(this.selector.BO.ModulesPage.search_button)
                 .getText(this.selector.BO.ModulesPage.number_of_module_found).then(function (text) {
-                global.nbr = text.indexOf('0');
-                if ((global.nbr != -1)||(global.nbr == 0)){
-                    done(new Error('The module you are searching for does not exist!'));
-                }
-            })
+                    global.nbr = text.indexOf('0');
+                    if ((global.nbr != -1)||(global.nbr == 0)){
+                        done(new Error('The module you are searching for does not exist!'));
+                    }
+                })
                 .waitForExist(this.selector.BO.ModulesPage.configuration_button, 90000)
                 .click(this.selector.BO.ModulesPage.configuration_button)
                 .call(done);
@@ -49,39 +49,33 @@ describe('Test case n°2 = check upela account connection', function () {
 
         it('should go to the module connection tabs and disconnect ' , function (done) {
             this.client
-                .waitForExist('//*[@id="upelaTabs"]/li[3]/a', 90000)
-                .click('//*[@id="upelaTabs"]/li[3]/a')
-
-                .waitForExist('//*[@id="settings_form"]/div[1]/div/div/form/div[3]/div/div/button', 90000)
-                .click('//*[@id="settings_form"]/div[1]/div/div/form/div[3]/div/div/button')
-
-
-                .waitForExist('//*[@id="home_form"]/div[1]/div/div/div[2]/a[2]')
-                .click('//*[@id="home_form"]/div[1]/div/div/div[2]/a[2]')
-
+                .waitForExist(this.selector.BO.UpelaModulePage.connexion_subtab, 90000)
+                .click(this.selector.BO.UpelaModulePage.connexion_subtab)
+                .waitForExist(this.selector.BO.UpelaModulePage.disconnect_button, 90000)
+                .click(this.selector.BO.UpelaModulePage.disconnect_button)
+                .waitForExist(this.selector.BO.UpelaModulePage.connect_button)
+                .click(this.selector.BO.UpelaModulePage.connect_button)
                 .call(done)
         });
 
         it('should go to the module connection tabs and connect ' , function (done) {
             this.client
-
-                .waitForExist('//*[@id="email"]', 90000)
-                .setValue('//*[@id="email"]', "fourat.ach@gmail.com")
-
-                .waitForExist('//*[@id="password"]', 90000)
-                .setValue('//*[@id="password"]', "242061")
-
-                .waitForExist('//*[@id="settings_form"]/div/div/div/form/div[3]/div[1]/div/button', 90000)
-                .click('//*[@id="settings_form"]/div/div/div/form/div[3]/div[1]/div/button')
-                .waitForExist('//*[@id="content"]/div[5]', 90000)
-
-                .getText('//*[@id="content"]/div[5]').then(function (text) {
+                .pause(1000)
+                .waitForExist(this.selector.BO.UpelaModulePage.production_mode_button, 90000)
+                .click(this.selector.BO.UpelaModulePage.production_mode_button)
+                .waitForExist(this.selector.BO.UpelaModulePage.mail_input, 90000)
+                .setValue(this.selector.BO.UpelaModulePage.mail_input, global.email_upela)
+                .waitForExist(this.selector.BO.UpelaModulePage.password_input, 90000)
+                .setValue(this.selector.BO.UpelaModulePage.password_input, "prestashop_demo")
+                .waitForExist(this.selector.BO.UpelaModulePage.setting_subtab, 90000)
+                .click(this.selector.BO.UpelaModulePage.setting_subtab)
+                .waitForExist(this.selector.BO.UpelaModulePage.success_panel, 90000)
+                .getText(this.selector.BO.UpelaModulePage.success_panel).then(function (text) {
                     if (text!='Connexion réussie !'){
                     done(new Error('erreur de connexion'));
                     }else
                     done();
-                })
-
+                });
         });
 
 
