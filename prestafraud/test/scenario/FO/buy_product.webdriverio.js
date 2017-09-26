@@ -6,7 +6,7 @@ var exit_cookieBanner = false;
 
 
 
-describe('The Purchase of a product', function(){
+describe('Test case n°2 = The Purchase of a product', function(){
 	common.initMocha.call(this);
 
 	before(function(done){
@@ -43,8 +43,6 @@ describe('The Purchase of a product', function(){
                 .click(this.selector.FO.ProductPage.modal_valid_button)
 			    .call(done);
 		});
-
-
 	});
 
 	describe('Validate the cart', function(){
@@ -77,7 +75,7 @@ describe('The Purchase of a product', function(){
 			 if (this.client.isExisting(this.selector.FO.Common.cookie_banner_close_button)){
 				 this.client
 					 .click(this.selector.FO.Common.cookie_banner_close_button);
-			 };
+			 }
 			this.client
 				.waitForExist(this.selector.FO.CartSummary.checkout_step4_cgv, 90000)
 				.click(this.selector.FO.CartSummary.checkout_step4_cgv)
@@ -89,7 +87,6 @@ describe('The Purchase of a product', function(){
 						done(new Error("echec of the order "));
 				}
 			})
-
 			 	.call(done);
 		});
 

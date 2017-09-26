@@ -99,7 +99,7 @@ describe('Test case n°1 = Check the default configuration', function () {
             this.client
                 .waitForExist(this.selector.BO.ModulePagePrestaFraud.prestafraud_legand,5000)
                 .getText(this.selector.BO.ModulePagePrestaFraud.prestafraud_legand).then(function(text) {
-                    if(text != "PrestaShop Security" ){
+                    if(text !== "PrestaShop Security" ){
                          done(new Error("Notification Prestafraud dosen't exist "));
                     }
                 })

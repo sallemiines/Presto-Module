@@ -20,7 +20,7 @@ describe('Allscenario', function(){
      require('./scenario/BO/check_default_configuration.webdriverio.js');
 
 	//Test case n°2 = Buy a product
-	require('./scenario/FO/buy_product.webdriverio.js');
+	 require('./scenario/FO/buy_product.webdriverio.js');
 
 	//Test case n°3 = Check the notification Prestafraud
 	 require('./scenario/BO/check_the_notification_prestafraud.webdriverio.js');
