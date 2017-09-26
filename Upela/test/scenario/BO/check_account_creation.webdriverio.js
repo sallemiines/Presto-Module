@@ -3,8 +3,6 @@ var should = require('should');
 var common = require('../../../../common/common.webdriverio');
 var globals = require('../../../../common/globals.webdriverio.js');
 
-global.webservice_key='';
-
 describe('Test case n°1 = check account creation', function () {
     common.initMocha.call(this);
 
@@ -43,7 +41,7 @@ describe('Test case n°1 = check account creation', function () {
                 .waitForExist(this.selector.BO.AdvancedParametersPage.WebserviceOption.search_button, 90000)
                 .click(this.selector.BO.AdvancedParametersPage.WebserviceOption.search_button)
                 .getText(this.selector.BO.AdvancedParametersPage.WebserviceOption.Upela_webservice).then(function(text) {
-                    global.webservice_key = text;
+                    global.webserviceKey = text;
                 })
                 .call(done);
         });
@@ -63,7 +61,7 @@ describe('Test case n°1 = check account creation', function () {
                 .click(this.selector.BO.ModulesPage.search_button)
                 .getText(this.selector.BO.ModulesPage.number_of_module_found).then(function (text) {
                      global.nbr = text.indexOf('0');
-                    if ((global.nbr != -1)||(global.nbr == 0)){
+                    if ((global.nbr !== -1)||(global.nbr === 0)){
                         done(new Error('The module you are searching for does not exist!'));
                     }
                 })
@@ -86,7 +84,7 @@ describe('Test case n°1 = check account creation', function () {
                     .waitForExist(this.selector.BO.UpelaModulePage.last_name_input, 90000)
                     .setValue(this.selector.BO.UpelaModulePage.last_name_input, "Demo")
                     .waitForExist(this.selector.BO.UpelaModulePage.mail_input, 90000)
-                    .setValue(this.selector.BO.UpelaModulePage.mail_input, "mail"+email_id+"@prestashop.com")
+                    .setValue(this.selector.BO.UpelaModulePage.mail_input, global.emailUpela)
                     .waitForExist(this.selector.BO.UpelaModulePage.mobile_number_input, 90000)
                     .setValue(this.selector.BO.UpelaModulePage.mobile_number_input, "6 10 00 10 23")
                     .waitForExist(this.selector.BO.UpelaModulePage.password_input, 90000)
@@ -98,93 +96,90 @@ describe('Test case n°1 = check account creation', function () {
             });
 
             it('company settings', function (done) {
-
                 this.client
                     .waitForExist(this.selector.BO.UpelaModulePage.company_subtab, 90000)
                     .click(this.selector.BO.UpelaModulePage.company_subtab)
-
-                    .waitForExist(this.selector.professional_address, 90000)
-                    .click(this.selector.professional_address)
-                    .waitForExist(this.selector.first_adresse, 90000)
-                    .setValue(this.selector.first_adresse, "21 rue poliveau ")
-                    .waitForExist(this.selector.pays_upela_compte, 90000)
-                    .click(this.selector.pays_upela_compte)
-                    .click(this.selector.pays_FR)
-                    .waitForExist(this.selector.postal_code, 90000)
-                    .setValue(this.selector.postal_code, "75005")
-                    .waitForExist(this.selector.ville, 90000)
-                    .setValue(this.selector.ville, "paris")
-                    .waitForExist(this.selector.immatriculation, 90000)
-                    .setValue(this.selector.immatriculation, "0123456789")
+                    .waitForExist(this.selector.BO.UpelaModulePage.professional_address_input, 90000)
+                    .click(this.selector.BO.UpelaModulePage.professional_address_input)
+                    .waitForExist(this.selector.BO.UpelaModulePage.adresse_input, 90000)
+                    .setValue(this.selector.BO.UpelaModulePage.adresse_input, "21 rue poliveau ")
+                    .waitForExist(this.selector.BO.UpelaModulePage.pays, 90000)
+                    .click(this.selector.BO.UpelaModulePage.pays)
+                    .click(this.selector.BO.UpelaModulePage.pays_FR)
+                    .waitForExist(this.selector.BO.UpelaModulePage.postal_code_input, 90000)
+                    .setValue(this.selector.BO.UpelaModulePage.postal_code_input, "75005")
+                    .waitForExist(this.selector.BO.UpelaModulePage.ville_input, 90000)
+                    .setValue(this.selector.BO.UpelaModulePage.ville_input, "paris")
+                    .waitForExist(this.selector.BO.UpelaModulePage.immatriculation_input, 90000)
+                    .setValue(this.selector.BO.UpelaModulePage.immatriculation_input, "0123456789")
                     .call(done);
 
             });
 
             it('shop settings', function (done) {
                 this.client
-                    .waitForExist(this.selector.shop_tab, 90000)
-                    .click(this.selector.shop_tab)
-                    .waitForExist(this.selector.shop_name_upela, 90000)
-                    .setValue(this.selector.shop_name_upela, "My store")
-                    .waitForExist(this.selector.shop_adresse, 90000)
-                    .setValue(this.selector.shop_adresse, "31 rue du Louvre")
-                    .waitForExist(this.selector.shop_pays, 90000)
-                    .click(this.selector.shop_pays)
-                    .click(this.selector.shop_FR)
-                    .waitForExist(this.selector.shop_postale_code, 90000)
-                    .setValue(this.selector.shop_postale_code, "75005")
-                    .waitForExist(this.selector.shop_ville, 90000)
-                    .setValue(this.selector.shop_ville, "paris")
-                    .waitForExist(this.selector.webservice_key_shop, 90000)
-                    .setValue(this.selector.webservice_key_shop, webservice_key)
+                    .waitForExist(this.selector.BO.UpelaModulePage.shop_subtab, 90000)
+                    .click(this.selector.BO.UpelaModulePage.shop_subtab)
+                    .waitForExist(this.selector.BO.UpelaModulePage.shop_name_input, 90000)
+                    .setValue(this.selector.BO.UpelaModulePage.shop_name_input, "My store")
+                    .waitForExist(this.selector.BO.UpelaModulePage.shop_adresse_input, 90000)
+                    .setValue(this.selector.BO.UpelaModulePage.shop_adresse_input, "31 rue du Louvre")
+                    .waitForExist(this.selector.BO.UpelaModulePage.shop_country, 90000)
+                    .click(this.selector.BO.UpelaModulePage.shop_country)
+                    .click(this.selector.BO.UpelaModulePage.shop_FR)
+                    .waitForExist(this.selector.BO.UpelaModulePage.shop_postale_code_input, 90000)
+                    .setValue(this.selector.BO.UpelaModulePage.shop_postale_code_input, "75005")
+                    .waitForExist(this.selector.BO.UpelaModulePage.shop_ville_input, 90000)
+                    .setValue(this.selector.BO.UpelaModulePage.shop_ville_input, "paris")
+                    .waitForExist(this.selector.BO.UpelaModulePage.webservice_input, 90000)
+                    .setValue(this.selector.BO.UpelaModulePage.webservice_input, webserviceKey)
                     .call(done);
             });
 
-
-
-            it('Account and shop creation', function (done) {
+            it('account and shop creation', function (done) {
                 this.client
-                    .waitForExist(this.selector.save_adding_shop, 90000)
-                    .click(this.selector.save_adding_shop)
-                    .waitForExist(this.selector.account_creation_success, 90000)
-                    .getText(this.selector.account_creation_success).then(function (text) {
-                        if(text != "Bienvenue dans Upela, votre compte est créé !" ){
+                    .waitForExist(this.selector.BO.UpelaModulePage.save_shop_button, 90000)
+                    .click(this.selector.BO.UpelaModulePage.save_shop_button)
+                    .waitForExist(this.selector.BO.UpelaModulePage.success_panel, 90000)
+                    .getText(this.selector.BO.UpelaModulePage.success_panel).then(function (text) {
+                        if (text != "Bienvenue dans Upela, votre compte est créé !" ){
                             done(new Error("Account creation failed"));
                         }
                     })
-                    .getText(this.selector.shop_creation_success).then(function (text) {
-                        if(text != "Boutique créée !" ){
+                    .getText(this.selector.BO.UpelaModulePage.success_created_shop).then(function (text) {
+                        if (text != "Boutique créée !" ){
                             done(new Error("Shop creation failed"));
                         }
                     })
-                    .waitForExist(this.selector.go_to_UPELA, 90000)
-                    .click(this.selector.go_to_UPELA)
+                    .waitForExist(this.selector.BO.UpelaModulePage.Upela_website_button, 90000)
+                    .click(this.selector.BO.UpelaModulePage.Upela_website_button)
                     .call(done);
             });
 
         });
+
         describe('Account verification', function (done) {
-              it('Upela Account and Store verification', function (done) {
+
+              it('upela Account and Store verification', function (done) {
                   this.client
                       .getTabIds().then(function (handles) {
-                          return this.switchTab(handles[handles.length - 1]);
+                          this.switchTab(handles[handles.length - 1]);
                       })
-                      .waitForExist('//*[@id="main"]/h1', 90000)
-                      .waitForExist(this.selector.mes_boutique_button, 5000)
-                      .click(this.selector.mes_boutique_button)
-                      .waitForExist('//*[@id="store_table"]/tbody/tr/td[3]/a', 5000)
-                      .click('//*[@id="store_table"]/tbody/tr/td[3]/a')
-                      .waitForExist('//*[@id="main"]/div[2]/div[2]/div/div[2]/div[2]/a', 5000)
-                      .click('//*[@id="main"]/div[2]/div[2]/div/div[2]/div[2]/a')
-                      .waitForVisible('/html/body/div[2]/div[2]', 3000)
-                      .waitForExist('/html/body/div[2]/div[2]/div/div[2]/div/div', 5000)
-                      .getText('/html/body/div[2]/div[2]/div/div[2]/div/div').then(function (text) {
-                          if(text != "Les commandes ont été téléchargées avec succès." ){
+                      .waitForExist(this.selector.UPELASITE.title, 90000)
+                      .waitForExist(this.selector.UPELASITE.mes_boutique_button, 90000)
+                      .click(this.selector.UPELASITE.mes_boutique_button)
+                      .waitForExist(this.selector.UPELASITE.store_subtab, 90000)
+                      .click(this.selector.UPELASITE.store_subtab)
+                      .waitForExist(this.selector.UPELASITE.download_command_button, 5000)
+                      .click(this.selector.UPELASITE.download_command_button)
+                      .waitForVisible(this.selector.UPELASITE.succes_modal, 3000)
+                      .waitForExist(this.selector.UPELASITE.success_message, 5000)
+                      .getText(this.selector.UPELASITE.success_message).then(function (text) {
+                          if (text != "Les commandes ont été téléchargées avec succès." ){
                               done(new Error("Orders have not been uploaded"));
                           }else
                               done();
                       })
-
                 });
 
         });
