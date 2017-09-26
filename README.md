@@ -25,23 +25,10 @@ Required modules to install using npm are:
 b)	How to launch tests
 
 -	First, you need to start selenium-standalone
--	Go to the folder of the version you want to test (in \test\itg, go into folder 1.6 or 1.7) and execute one of the following lines:
+-	Go to the folder of the module you want to test and execute the following line:
+- Launch tests :
 
--        Launch tests without module installation :
-mocha index.webdriverio.js --URL=localhost/1.7.0.0
-
--           Launch tests with module installation:
-mocha index.webdriverio.js --URL=localhost/1.7.0.0 --MODULE=statsbestmanufacturers
-
--        Launch tests without module installation :
-mocha index.webdriverio.js --URL=localhost/1.7.0.0 –SAUCELABS=true
-
-
-
+      mocha index.webdriverio.js --URL=presto200917.staging-prestashopready.net --EMAIL=remi.gaillard@prestashop.com --PWD=abcd1234
 -	URL: Front office URL of your prestashop website (without the “http://”)
--	MODULE (optional) : « data-tech-name »  of the module
--	SAUCELABS (optional): Turn it to « true » to use SauceLabs (you need to provide yours SauceLabs ID in your Travis folder)
-
-
-Information: To select the module to test, we decided to use the « data-tech-name » because this variable give us only one result in the search module part, in this case we are sure to select the right module
-
+-	Email  : Admin email
+-	PWD : Admin password

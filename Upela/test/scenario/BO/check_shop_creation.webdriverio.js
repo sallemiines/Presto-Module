@@ -3,8 +3,6 @@ var should = require('should');
 var common = require('../../../../common/common.webdriverio');
 var globals = require('../../../../common/globals.webdriverio.js');
 
-//global.webservice_key='j4Pu357Oqy8EBCfra9ccyd3HsxcUSkFs';
-
 describe('Test case n°3 = check upela account connection', function () {
     common.initMocha.call(this);
 
@@ -36,7 +34,7 @@ describe('Test case n°3 = check upela account connection', function () {
                 .click(this.selector.BO.ModulesPage.search_button)
                 .getText(this.selector.BO.ModulesPage.number_of_module_found).then(function (text) {
                 global.nbr = text.indexOf('0');
-                if ((global.nbr != -1)||(global.nbr == 0)){
+                if ((global.nbr !== -1)||(global.nbr === 0)){
                     done(new Error('The module you are searching for does not exist!'));
                 }
             })
@@ -62,7 +60,7 @@ describe('Test case n°3 = check upela account connection', function () {
                 .waitForExist(this.selector.BO.UpelaModulePage.last_name_input, 90000)
                 .setValue(this.selector.BO.UpelaModulePage.last_name_input, "PrestaShop")
                 .waitForExist(this.selector.BO.UpelaModulePage.mail_input, 90000)
-                .setValue(this.selector.BO.UpelaModulePage.mail_input,global.email_upela)
+                .setValue(this.selector.BO.UpelaModulePage.mail_input,global.emailUpela)
                 .waitForExist(this.selector.BO.UpelaModulePage.mobile_number_input, 90000)
                 .setValue(this.selector.BO.UpelaModulePage.mobile_number_input, "0123-456-789")
                 .waitForExist(this.selector.BO.UpelaModulePage.shop_name_input, 90000)
@@ -77,15 +75,15 @@ describe('Test case n°3 = check upela account connection', function () {
                 .waitForExist(this.selector.BO.UpelaModulePage.shop_ville_input, 90000)
                 .setValue(this.selector.BO.UpelaModulePage.shop_ville_input, "paris")
                 .waitForExist(this.selector.BO.UpelaModulePage.webservice_input, 90000)
-                .setValue(this.selector.BO.UpelaModulePage.webservice_input, webservice_key)
+                .setValue(this.selector.BO.UpelaModulePage.webservice_input, global.webserviceKey)
                 .waitForExist(this.selector.BO.UpelaModulePage.save_shop_button,9000)
                 .click(this.selector.BO.UpelaModulePage.save_shop_button)
                 .waitForExist(this.selector.BO.UpelaModulePage.success_panel,9000)
                 .getText(this.selector.BO.UpelaModulePage.success_panel).then(function (text) {
-                if (text!='Boutique créée !'){
-                   done(new Error('Error when create a shop! '));
-                }
-            })
+                    if (text!=='Boutique créée !'){
+                       done(new Error('Error when create a shop! '));
+                    }
+                 })
                 .waitForExist(this.selector.BO.UpelaModulePage.Upela_website_button, 90000)
                 .click(this.selector.BO.UpelaModulePage.Upela_website_button)
                 .call(done);
@@ -110,7 +108,7 @@ describe('Test case n°3 = check upela account connection', function () {
                 .waitForVisible(this.selector.UPELASITE.succes_modal, 3000)
                 .waitForExist(this.selector.UPELASITE.success_message, 5000)
                 .getText(this.selector.UPELASITE.second_shop_success).then(function (text) {
-                    if(text != "Les commandes ont été téléchargées avec succès." ){
+                    if (text !== "Les commandes ont été téléchargées avec succès." ){
                         done(new Error("Orders have not been uploaded"));
                     }else
                         done();

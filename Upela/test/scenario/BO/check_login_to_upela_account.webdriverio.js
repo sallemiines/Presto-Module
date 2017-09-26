@@ -3,8 +3,6 @@ var should = require('should');
 var common = require('../../../../common/common.webdriverio');
 var globals = require('../../../../common/globals.webdriverio.js');
 
-global.webservice_key='';
-
 describe('Test case n°2 = check upela account connection', function () {
     common.initMocha.call(this);
 
@@ -38,7 +36,7 @@ describe('Test case n°2 = check upela account connection', function () {
                 .click(this.selector.BO.ModulesPage.search_button)
                 .getText(this.selector.BO.ModulesPage.number_of_module_found).then(function (text) {
                     global.nbr = text.indexOf('0');
-                    if ((global.nbr != -1)||(global.nbr === 0)){
+                    if ((global.nbr !== -1)||(global.nbr === 0)){
                         done(new Error('The module you are searching for does not exist!'));
                     }
                 })
@@ -65,7 +63,7 @@ describe('Test case n°2 = check upela account connection', function () {
                 .click(this.selector.BO.UpelaModulePage.production_mode_button)
                 .pause(5000)
                 .waitForExist(this.selector.BO.UpelaModulePage.mail_input, 90000)
-                .setValue(this.selector.BO.UpelaModulePage.mail_input,global.email_upela)
+                .setValue(this.selector.BO.UpelaModulePage.mail_input,global.emailUpela)
                 .waitForExist(this.selector.BO.UpelaModulePage.password_input, 90000)
                 .setValue(this.selector.BO.UpelaModulePage.password_input, "prestashop_demo")
                 .waitForExist(this.selector.BO.UpelaModulePage.setting_subtab, 90000)

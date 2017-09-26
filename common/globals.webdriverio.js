@@ -19,7 +19,10 @@ global.my_src_image1 = "";
 global.my_src_image2 = "";
 
 // Upela Module globals
-global.webservice_id='';
+global.webserviceKey='';
+global.dateTimeNumber = new Date().getTime();
+global.emailUpela= 'mail' + dateTimeNumber + '@prestashop.com';
+
 
 
 module.exports = {
