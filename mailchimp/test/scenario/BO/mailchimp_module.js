@@ -60,8 +60,8 @@ describe('The MailchimpIntegration Module', function () {
                 }
                 else {
                     this.client
-                        .waitForExist(this.selector.BO.ModuleMailChimp.mailchimp_configuration_button, 3000)
-                        .click(this.selector.BO.ModuleMailChimp.mailchimp_configuration_button)
+                        .waitForExist(this.selector.BO.MailChimpModulePage.mailchimp_configuration_button, 3000)
+                        .click(this.selector.BO.MailChimpModulePage.mailchimp_configuration_button)
                         .call(done)
                 }
             })
@@ -70,20 +70,20 @@ describe('The MailchimpIntegration Module', function () {
             it("should click on connect to mailchimp button", function (done) {
                 global.fctname = this.test.title;
                 this.client
-                    .waitForExist(this.selector.BO.ModuleMailChimp.mailchimp_access_button, 3000)
-                    .click(this.selector.BO.ModuleMailChimp.mailchimp_access_button)
+                    .waitForExist(this.selector.BO.MailChimpModulePage.mailchimp_access_button, 3000)
+                    .click(this.selector.BO.MailChimpModulePage.mailchimp_access_button)
                     .call(done)
             })
 
             it("should access to mailchimp", function (done) {
                 global.fctname = this.test.title;
                 this.client
-                    .waitForExist(this.selector.BO.ModuleMailChimp.mailchimp_login_input, 3000)
-                    .setValue(this.selector.BO.ModuleMailChimp.mailchimp_login_input, 'ines50')
-                    .waitForExist(this.selector.BO.ModuleMailChimp.mailchimp_password_input, 3000)
-                    .setValue(this.selector.BO.ModuleMailChimp.mailchimp_password_input, 'Inezs/50')
-                    .waitForExist(this.selector.BO.ModuleMailChimp.mailchimp_login_button, 3000)
-                    .click(this.selector.BO.ModuleMailChimp.mailchimp_login_button)
+                    .waitForExist(this.selector.BO.MailChimpModulePage.mailchimp_login_input, 3000)
+                    .setValue(this.selector.BO.MailChimpModulePage.mailchimp_login_input, 'ines50')
+                    .waitForExist(this.selector.BO.MailChimpModulePage.mailchimp_password_input, 3000)
+                    .setValue(this.selector.BO.MailChimpModulePage.mailchimp_password_input, 'Inezs/50')
+                    .waitForExist(this.selector.BO.MailChimpModulePage.mailchimp_login_button, 3000)
+                    .click(this.selector.BO.MailChimpModulePage.mailchimp_login_button)
                     .call(done)
 
             })
@@ -91,17 +91,17 @@ describe('The MailchimpIntegration Module', function () {
             it("should select a list", function (done) {
                 global.fctname = this.test.title;
                 this.client
-                    .waitForExist(this.selector.BO.ModuleMailChimp.mailchimp_list_select, 2000)
-                    .selectByIndex(this.selector.BO.ModuleMailChimp.mailchimp_list_select, 2)
-                    .getText(this.selector.BO.ModuleMailChimp.mailchimp_list_selected).then(function (select_value) {
+                    .waitForExist(this.selector.BO.MailChimpModulePage.mailchimp_list_select, 2000)
+                    .selectByIndex(this.selector.BO.MailChimpModulePage.mailchimp_list_select, 2)
+                    .getText(this.selector.BO.MailChimpModulePage.mailchimp_list_selected).then(function (select_value) {
                     global.value = select_value
                     should(global.value).be.equal("PrestoTests")
                 })
 
-                    .waitForExist(this.selector.BO.ModuleMailChimp.mailchimp_save_list_button, 2000)
-                    .click(this.selector.BO.ModuleMailChimp.mailchimp_save_list_button)
-                    .waitForExist(this.selector.BO.ModuleMailChimp.mailchimp_connection_list, 2000)
-                    .getText(this.selector.BO.ModuleMailChimp.mailchimp_connection_list).then(function (text) {
+                    .waitForExist(this.selector.BO.MailChimpModulePage.mailchimp_save_list_button, 2000)
+                    .click(this.selector.BO.MailChimpModulePage.mailchimp_save_list_button)
+                    .waitForExist(this.selector.BO.MailChimpModulePage.mailchimp_connection_list, 2000)
+                    .getText(this.selector.BO.MailChimpModulePage.mailchimp_connection_list).then(function (text) {
                     var list = text;
                     should(list).be.equal("Connected to list " + global.value);
                 })

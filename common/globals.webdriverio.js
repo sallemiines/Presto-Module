@@ -74,11 +74,10 @@ module.exports = {
                 enable_module_button: '[class="dropdown-item module_action_menu_enable"]'
             },
 
-            ModuleMailChimp: {
+            MailChimpModulePage: {
                 mailchimp_login_input:'//*[@id="username"]',
                 mailchimp_password_input:'//*[@id="password"]',
                 mailchimp_login_button:'//*[@id="login-form"]/fieldset/div[3]/input',
-                mailchimp_login_button_text:'//*[@id="login"]',
                 mailchimp_access_button:'//*[@id="content"]/div[5]/div/div/div/a',
                 mailchimp_connection_list:'//*[@id="content"]/div[5]/div/div/div/span',
                 mailchimp_list_select:'//*[@id="current_list_id"]',
