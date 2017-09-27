@@ -10,6 +10,7 @@ global.email = argv.EMAIL;
 global.password = argv.PWD;
 global.module_tech_name = 'faviconotification';
 global.module_tech_name_prestafraud = 'prestafraud';
+global.module_tech_name_mailchimp = 'mailchimpintegration';
 global.browser = argv.browser;
 global.saucelabs = argv.SAUCELABS;
 global._projectdir = path.join(__dirname, '..', '..');
@@ -27,7 +28,6 @@ global.emailUpela= 'mail' + dateTimeNumber + '@prestashop.com';
 
 module.exports = {
     selector: {
-
         BO: {
             //Back office login page selector
             AccessPage: {
@@ -72,6 +72,19 @@ module.exports = {
                 modal_confirm_uninstall: '//*[@id="module-modal-confirm-' + module_tech_name + '-uninstall" and @class="modal modal-vcenter fade in"]//a[@class="btn btn-primary uppercase module_action_modal_uninstall"]',
                 module_menu_button: '[class="btn btn-primary-outline  dropdown-toggle"]',
                 enable_module_button: '[class="dropdown-item module_action_menu_enable"]'
+            },
+
+            ModuleMailChimp: {
+                mailchimp_login_input:'//*[@id="username"]',
+                mailchimp_password_input:'//*[@id="password"]',
+                mailchimp_login_button:'//*[@id="login-form"]/fieldset/div[3]/input',
+                mailchimp_login_button_text:'//*[@id="login"]',
+                mailchimp_access_button:'//*[@id="content"]/div[5]/div/div/div/a',
+                mailchimp_connection_list:'//*[@id="content"]/div[5]/div/div/div/span',
+                mailchimp_list_select:'//*[@id="current_list_id"]',
+                mailchimp_save_list_button:'//*[@id="configuration_form_submit_btn"]',
+                mailchimp_configuration_button:'//*[@id="modules-list-container-all"]/div/div/div/div[5]/div[2]/form/button',
+                mailchimp_list_selected:'//*[@id="current_list_id"]/option[3]',
             },
 
             //Upela module selectorl
@@ -152,7 +165,7 @@ module.exports = {
             AccessPage: {
                 logo_home_page: '.logo.img-responsive',
                 first_product_home_page: '.thumbnail.product-thumbnail',
-                
+
                 access_loginFO:'div.user-info > a',
                 loginFO_input: '//*[@id="login-form"]/section/div[1]/div[1]/input',
                 passwordFO_input: '//*[@id="login-form"]/section/div[2]/div[1]/div/input',
@@ -163,13 +176,13 @@ module.exports = {
             //Product page selectors
             ProductPage: {
                 add_to_cart_button: '.btn.btn-primary.add-to-cart',
-                
+
                 product_choice:'//*[@id="content"]/section[1]/div/article[1]/div/div[1]/h1/a',
                 product_image: '#content',
                 validate_cart_choice_button:'//*[@id="add-to-cart-or-refresh"]/div[2]/div[1]/div[2]/button',
                 modal_valid_button:'//*[@id="blockcart-modal"]/div/div/div[2]/div/div[2]/div/div/a'
             },
-            
+
             //Cart summary selectors
             CartSummary:{
                 command_button_checkout: '//*[@id="main"]/div/div[2]/div[1]/div[3]/div/a',
