@@ -36,17 +36,6 @@ module.exports = {
                 login_button: '[name="submitLogin"]'
             },
 
-            //Advenced Parameter page
-            AdvancedParametersPage:{
-                menu:'//*[@id="subtab-AdminAdvancedParameters"]/a',
-                Webservice:'//*[@id="subtab-AdminWebservice"]/a',
-                WebserviceOption:{
-                    search_input:'//*[@id="form-webservice_account"]/div/div[2]/table/thead/tr[2]/th[3]/input',
-                    search_button:'//*[@id="submitFilterButtonwebservice_account"]',
-                    Upela_webservice:'//*[@id="form-webservice_account"]/div/div[2]/table/tbody/tr/td[2]'
-                }
-            },
-
             //Common selectors
             Common: {
                 menu: '#nav-sidebar',
@@ -75,15 +64,15 @@ module.exports = {
             },
 
             MailChimpModulePage: {
-                mailchimp_login_input:'//*[@id="username"]',
-                mailchimp_password_input:'//*[@id="password"]',
-                mailchimp_login_button:'//*[@id="login-form"]/fieldset/div[3]/input',
-                mailchimp_access_button:'//*[@id="content"]/div[5]/div/div/div/a',
-                mailchimp_connection_list:'//*[@id="content"]/div[5]/div/div/div/span',
-                mailchimp_list_select:'//*[@id="current_list_id"]',
-                mailchimp_save_list_button:'//*[@id="configuration_form_submit_btn"]',
-                mailchimp_configuration_button:'//*[@id="modules-list-container-all"]/div/div/div/div[5]/div[2]/form/button',
-                mailchimp_list_selected:'//*[@id="current_list_id"]/option[3]',
+                login_input: '//*[@id="username"]',
+                password_input: '//*[@id="password"]',
+                login_button: '//*[@id="login-form"]/fieldset/div[3]/input',
+                access_button: '//*[@id="content"]/div[4]/div/div/div/a',
+                connection_list: '//*[@id="content"]/div[5]/div/div/div/span',
+                list_select: '//*[@id="current_list_id"]',
+                save_button: '//*[@id="configuration_form_submit_btn"]',
+                configuration_button: '//*[@id="modules-list-container-all"]/div/div/div/div[5]/div[2]/form/button',
+                option_select: '//*[@id="current_list_id"]/option[3]'
             },
 
             //Upela module selectorl

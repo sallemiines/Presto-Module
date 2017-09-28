@@ -3,7 +3,7 @@ var should = require('should');
 var common = require('../../../../common/common.webdriverio');
 var globals = require('../../../../common/globals.webdriverio.js');
 
-describe('The MailchimpIntegration Module', function () {
+describe('Test n°1 = Check the mailchimp configuration', function () {
     common.initMocha.call(this);
 
     before(function (done) {
@@ -17,17 +17,11 @@ describe('The MailchimpIntegration Module', function () {
     describe('Log in in Back Office', function (done) {
         it('should log in successfully in BO', function (done) {
             this.client
-                .pause(5000)
-                .url('https://' + URL + '/backoffice/')
-                .waitForExist(this.selector.BO.AccessPage.login_input, 30000)
-                .setValue(this.selector.BO.AccessPage.login_input, 'remi.gaillard@prestashop.com')
-                .waitForExist(this.selector.BO.AccessPage.password_input, 30000)
-                .setValue(this.selector.BO.AccessPage.password_input, 'abcd1234')
-                .click(this.selector.BO.AccessPage.login_button)
+                .signinBO()
+                .waitForExist(this.selector.BO.Common.menu, 90000)
                 .call(done);
         });
     });
-
 
     describe('Should access to the modules page', function (done) {
         it('should go to modules page', function (done) {
@@ -50,64 +44,71 @@ describe('The MailchimpIntegration Module', function () {
             })
                 .call(done);
         });
+    });
 
+    describe("Configure the module", function (done) {
 
-        describe("Configure the module", function (done) {
-
-            it('should click on configuration button ', function (done) {
-                if (global.nbr == 0) {
-                    done(new Error('The module you are searching for does not exist!'));
-                }
-                else {
-                    this.client
-                        .waitForExist(this.selector.BO.MailChimpModulePage.mailchimp_configuration_button, 3000)
-                        .click(this.selector.BO.MailChimpModulePage.mailchimp_configuration_button)
-                        .call(done)
-                }
-            })
-
-
-            it("should click on connect to mailchimp button", function (done) {
-                global.fctname = this.test.title;
+        it('should click on configuration button ', function (done) {
+            if (global.nbr === 0) {
+                done(new Error('The module you are searching for does not exist!'));
+            }
+            else {
                 this.client
-                    .waitForExist(this.selector.BO.MailChimpModulePage.mailchimp_access_button, 3000)
-                    .click(this.selector.BO.MailChimpModulePage.mailchimp_access_button)
+                    .waitForExist(this.selector.BO.MailChimpModulePage.configuration_button, 3000)
+                    .click(this.selector.BO.MailChimpModulePage.configuration_button)
                     .call(done)
-            })
+            }
+        })
 
-            it("should access to mailchimp", function (done) {
-                global.fctname = this.test.title;
-                this.client
-                    .waitForExist(this.selector.BO.MailChimpModulePage.login_input, 3000)
-                    .setValue(this.selector.BO.MailChimpModulePage.login_input, 'ines50')
-                    .waitForExist(this.selector.BO.MailChimpModulePage.password_input, 3000)
-                    .setValue(this.selector.BO.MailChimpModulePage.password_input, 'Inezs/50')
-                    .waitForExist(this.selector.BO.MailChimpModulePage.login_button, 3000)
-                    .click(this.selector.BO.MailChimpModulePage.login_button)
-                    .call(done)
 
-            })
+        it("should access to the module configuration  page", function (done) {
+            global.fctname = this.test.title;
+            this.client
+                .waitForExist(this.selector.BO.MailChimpModulePage.access_button, 3000)
+                .click(this.selector.BO.MailChimpModulePage.access_button)
+                .call(done)
+        })
 
-            it("should select a list", function (done) {
-                global.fctname = this.test.title;
-                this.client
-                    .waitForExist(this.selector.BO.MailChimpModulePage.list_select, 2000)
-                    .selectByIndex(this.selector.BO.MailChimpModulePage.list_select, 2)
-                    .getText(this.selector.BO.MailChimpModulePage.list_selected).then(function (selectValue) {
-                    global.value = selectValue
-                    should(global.value).be.equal("PrestoTests")
-                })
+        it("should access to mailchimp", function (done) {
+            global.fctname = this.test.title;
+            this.client
+                .waitForExist(this.selector.BO.MailChimpModulePage.login_input, 3000)
+                .setValue(this.selector.BO.MailChimpModulePage.login_input, 'prestotests')
+                .waitForExist(this.selector.BO.MailChimpModulePage.password_input, 3000)
+                .setValue(this.selector.BO.MailChimpModulePage.password_input, 'Presto_tests1')
+                .waitForExist(this.selector.BO.MailChimpModulePage.login_button, 3000)
+                .click(this.selector.BO.MailChimpModulePage.login_button)
+                .call(done)
 
-                    .waitForExist(this.selector.BO.MailChimpModulePage.save_list_button, 2000)
-                    .click(this.selector.BO.MailChimpModulePage.save_list_button)
-                    .waitForExist(this.selector.BO.MailChimpModulePage.connection_list, 2000)
-                    .getText(this.selector.BO.MailChimpModulePage.connection_list).then(function (text) {
-                    var list = text;
-                    should(list).be.equal("Connected to list " + global.value);
-                })
-                    .call(done)
-
-            })
         });
-    })
+    });
+
+    describe('Should Select an existing List ', function (done) {
+
+        it("should select a list", function (done) {
+            global.fctname = this.test.title;
+            this.client
+                .waitForExist(this.selector.BO.MailChimpModulePage.list_select, 2000)
+                .selectByIndex(this.selector.BO.MailChimpModulePage.list_select, 1)
+                .getText(this.selector.BO.MailChimpModulePage.option_select).then(function (selectValue) {
+                global.value = selectValue
+                should(global.value).be.equal("Development")
+                    .call(done)
+            })
+        })
+        it("should check the list name ", function (done) {
+
+            global.fctname = this.test.title;
+            this.client
+                .waitForExist(this.selector.BO.MailChimpModulePage.save_button, 2000)
+                .click(this.selector.BO.MailChimpModulePage.save_button)
+                .waitForExist(this.selector.BO.MailChimpModulePage.connection_list, 2000)
+                .getText(this.selector.BO.MailChimpModulePage.connection_list).then(function (text) {
+                var list = text;
+                should(list).be.equal("Connected to list " + global.value);
+            })
+                .call(done)
+        })
+    });
+
 })

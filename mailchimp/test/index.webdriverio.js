@@ -17,7 +17,8 @@ describe('Allscenario', function () {
             .call(done);
     });
 
-    require('./scenario/BO/mailchimp_module.js');
+    // Test n°1 = Check the mailchimp configuration
+    require('./scenario/BO/check_mailchimp_configuration.webdriverio.js');
 
 
 });

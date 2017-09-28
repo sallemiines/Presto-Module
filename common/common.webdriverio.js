@@ -34,8 +34,8 @@ function initCommands(client) {
         client
             .url('http://' + URL + '/backoffice/')
             .waitForExist(this.selector.BO.AccessPage.login_input, 90000)
-            .setValue(this.selector.BO.AccessPage.login_input, email)
-            .setValue(this.selector.BO.AccessPage.password_input, password)
+            .setValue(this.selector.BO.AccessPage.login_input, 'remi.gaillard@prestashop.com')
+            .setValue(this.selector.BO.AccessPage.password_input, 'abcd1234')
             .click(this.selector.BO.AccessPage.login_button)
             .waitForExist(this.selector.BO.Common.menu, 90000)
             .call(cb);
