@@ -80,8 +80,37 @@ describe('Test n°1 = Check the mailchimp configuration', function () {
                 .click(this.selector.BO.MailChimpModulePage.login_button)
                 .call(done)
 
-        });
+        })
+
+
+        it("should add a  new name list ",function (done) {
+            global.fctname = this.test.title ;
+            this.client
+                .waitForExist(this.selector.BO.MailChimpModulePage.list_input,3000)
+                .setValue(this.selector.BO.MailChimpModulePage.list_input,global.list_name_input)
+                .click(this.selector.BO.MailChimpModulePage.save_button)
+                .getText(this.selector.BO.MailChimpModulePage.connection_list).then(function (text) {
+                var list = text;
+                should(list).be.equal("Connected to list " + global.list_name_input);
+            })
+                .call(done)
+
+        })
+
     });
+
+    describe("Disconnect from list", function (done) {
+        it('should click on disconnect button', function (done) {
+            global.fctname = this.test.title;
+            this.client
+                .pause(3000)
+                .waitForExist(this.selector.BO.MailChimpModulePage.save_button,3000)
+                .click(this.selector.BO.MailChimpModulePage.save_button)
+                .call(done)
+
+
+        }) })
+;
 
     describe('Should Select an existing List ', function (done) {
 
@@ -89,26 +118,16 @@ describe('Test n°1 = Check the mailchimp configuration', function () {
             global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.BO.MailChimpModulePage.list_select, 2000)
-                .selectByIndex(this.selector.BO.MailChimpModulePage.list_select, 1)
-                .getText(this.selector.BO.MailChimpModulePage.option_select).then(function (selectValue) {
+                .selectByVisibleText(this.selector.BO.MailChimpModulePage.list_select, global.list_name_input).getText('option:checked').then(function (selectValue) {
                 global.value = selectValue
-                should(global.value).be.equal("Development")
-                    .call(done)
-            })
-        })
-        it("should check the list name ", function (done) {
+                should(global.value).be.equal(global.list_name_input)
 
-            global.fctname = this.test.title;
-            this.client
-                .waitForExist(this.selector.BO.MailChimpModulePage.save_button, 2000)
-                .click(this.selector.BO.MailChimpModulePage.save_button)
-                .waitForExist(this.selector.BO.MailChimpModulePage.connection_list, 2000)
-                .getText(this.selector.BO.MailChimpModulePage.connection_list).then(function (text) {
-                var list = text;
-                should(list).be.equal("Connected to list " + global.value);
             })
                 .call(done)
+                .pause(3000)
         })
+
     });
+
 
 })

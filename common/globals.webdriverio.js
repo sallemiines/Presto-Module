@@ -18,6 +18,7 @@ global.product_id = new Date().getTime();
 global.new_customer_email = 'pub' + date_time + '@prestashop.com';
 global.my_src_image1 = "";
 global.my_src_image2 = "";
+global.list_name_input='Test_list' + date_time ;
 
 // Upela Module globals
 global.webserviceKey='';
@@ -67,12 +68,13 @@ module.exports = {
                 login_input: '//*[@id="username"]',
                 password_input: '//*[@id="password"]',
                 login_button: '//*[@id="login-form"]/fieldset/div[3]/input',
-                access_button: '//*[@id="content"]/div[4]/div/div/div/a',
+                access_button: '//*[@id="content"]/div[5]/div/div/div/a',
                 connection_list: '//*[@id="content"]/div[5]/div/div/div/span',
                 list_select: '//*[@id="current_list_id"]',
                 save_button: '//*[@id="configuration_form_submit_btn"]',
                 configuration_button: '//*[@id="modules-list-container-all"]/div/div/div/div[5]/div[2]/form/button',
-                option_select: '//*[@id="current_list_id"]/option[3]'
+                option_select: '//*[@id="current_list_id"]/option[3]',
+                list_input:'//*[@id="new_list_name"]'
             },
 
             //Upela module selectorl
