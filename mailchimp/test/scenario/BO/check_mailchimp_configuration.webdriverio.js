@@ -35,7 +35,7 @@ describe('Test n°1 = Check the mailchimp configuration', function () {
         it('should go to the mailchimp module', function (done) {
             this.client
                 .waitForExist(this.selector.BO.ModulesPage.search_input, 3000)
-                .setValue(this.selector.BO.ModulesPage.search_input, global.module_tech_name)
+                .setValue(this.selector.BO.ModulesPage.search_input, global.module_tech_name_mailchimp)
                 .waitForExist(this.selector.BO.ModulesPage.search_button, 3000)
                 .click(this.selector.BO.ModulesPage.search_button)
                 .pause(3000)
@@ -87,11 +87,11 @@ describe('Test n°1 = Check the mailchimp configuration', function () {
             global.fctname = this.test.title ;
             this.client
                 .waitForExist(this.selector.BO.MailChimpModulePage.list_input,3000)
-                .setValue(this.selector.BO.MailChimpModulePage.list_input,global.list_name_input)
+                .setValue(this.selector.BO.MailChimpModulePage.list_input,global.listNameInput)
                 .click(this.selector.BO.MailChimpModulePage.save_button)
                 .getText(this.selector.BO.MailChimpModulePage.connection_list).then(function (text) {
                 var list = text;
-                should(list).be.equal("Connected to list " + global.list_name_input);
+                should(list).be.equal("Connected to list " + global.listNameInput);
             })
                 .call(done)
 
@@ -118,9 +118,9 @@ describe('Test n°1 = Check the mailchimp configuration', function () {
             global.fctname = this.test.title;
             this.client
                 .waitForExist(this.selector.BO.MailChimpModulePage.list_select, 2000)
-                .selectByVisibleText(this.selector.BO.MailChimpModulePage.list_select, global.list_name_input).getText('option:checked').then(function (selectValue) {
+                .selectByVisibleText(this.selector.BO.MailChimpModulePage.list_select, global.listNameInput).getText('option:checked').then(function (selectValue) {
                 global.value = selectValue
-                should(global.value).be.equal(global.list_name_input)
+                should(global.value).be.equal(global.listNameInput)
 
             })
                 .call(done)
