@@ -3,7 +3,7 @@ var should = require('should');
 var common = require('../../../../common/common.webdriverio');
 var globals = require('../../../../common/globals.webdriverio.js');
 
-describe('Test n°1 = Check the mailchimp configuration', function () {
+describe('Test n°2 = Check the mailchimp configuration', function () {
     common.initMocha.call(this);
 
     before(function (done) {
@@ -12,16 +12,6 @@ describe('Test n°1 = Check the mailchimp configuration', function () {
     });
 
     after(common.after);
-
-
-    describe('Log in in Back Office', function (done) {
-        it('should log in successfully in BO', function (done) {
-            this.client
-                .signinBO()
-                .waitForExist(this.selector.BO.Common.menu, 90000)
-                .call(done);
-        });
-    });
 
     describe('Should access to the modules page', function (done) {
         it('should go to modules page', function (done) {
@@ -42,8 +32,8 @@ describe('Test n°1 = Check the mailchimp configuration', function () {
                 .getText(this.selector.BO.ModulesPage.page_loaded).then(function (nbr) {
                 global.nbr = parseInt(nbr[0].charAt(0));
             })
-                .call(done);
-        });
+                .call(done)
+        })
     });
 
     describe("Configure the module", function (done) {
@@ -59,7 +49,6 @@ describe('Test n°1 = Check the mailchimp configuration', function () {
                     .call(done)
             }
         })
-
 
         it("should access to the module configuration  page", function (done) {
             global.fctname = this.test.title;
@@ -82,19 +71,17 @@ describe('Test n°1 = Check the mailchimp configuration', function () {
 
         })
 
-
-        it("should add a  new name list ",function (done) {
-            global.fctname = this.test.title ;
+        it("should add a  new name list ", function (done) {
+            global.fctname = this.test.title;
             this.client
-                .waitForExist(this.selector.BO.MailChimpModulePage.list_input,3000)
-                .setValue(this.selector.BO.MailChimpModulePage.list_input,global.listNameInput)
+                .waitForExist(this.selector.BO.MailChimpModulePage.list_input, 3000)
+                .setValue(this.selector.BO.MailChimpModulePage.list_input, global.listNameInput)
                 .click(this.selector.BO.MailChimpModulePage.save_button)
                 .getText(this.selector.BO.MailChimpModulePage.connection_list).then(function (text) {
                 var list = text;
                 should(list).be.equal("Connected to list " + global.listNameInput);
             })
                 .call(done)
-
         })
 
     });
@@ -104,13 +91,11 @@ describe('Test n°1 = Check the mailchimp configuration', function () {
             global.fctname = this.test.title;
             this.client
                 .pause(3000)
-                .waitForExist(this.selector.BO.MailChimpModulePage.save_button,3000)
+                .waitForExist(this.selector.BO.MailChimpModulePage.save_button, 3000)
                 .click(this.selector.BO.MailChimpModulePage.save_button)
                 .call(done)
-
-
-        }) })
-;
+        })
+    });
 
     describe('Should Select an existing List ', function (done) {
 
@@ -121,13 +106,19 @@ describe('Test n°1 = Check the mailchimp configuration', function () {
                 .selectByVisibleText(this.selector.BO.MailChimpModulePage.list_select, global.listNameInput).getText('option:checked').then(function (selectValue) {
                 global.value = selectValue
                 should(global.value).be.equal(global.listNameInput)
-
             })
                 .call(done)
                 .pause(3000)
         })
-
     });
 
+    describe('Log out in Back Office', function (done) {
+        it('should log out successfully in BO', function (done) {
+            global.fctname = this.test.title;
+            this.client
+                .signoutBO()
+                .call(done);
+        })
+    });
 
 })

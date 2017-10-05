@@ -17,11 +17,8 @@ describe('Allscenario', function () {
             .call(done);
     });
 
-         // Test n°1 = Check the store configuration
-    require('./scenario/BO/check_magasin_configuration.webdriverio.js');
-        // Test n°2 = Check the mailchimp configuration
-    require('./scenario/BO/check_mailchimp_configuration.webdriverio.js');
-
+    // Test n°1 = Check the SeoExpert configuration
+    require('./scenario/BO/check_seo_expert_configuration.webdriverio.js');
 
 
 });
