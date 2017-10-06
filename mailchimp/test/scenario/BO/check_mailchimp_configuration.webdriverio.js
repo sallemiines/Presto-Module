@@ -24,9 +24,9 @@ describe('Test n°2 = Check the mailchimp configuration', function () {
         })
         it('should go to the mailchimp module', function (done) {
             this.client
-                .waitForExist(this.selector.BO.ModulesPage.search_input, 3000)
+                .waitForExist(this.selector.BO.ModulesPage.search_input, 90000)
                 .setValue(this.selector.BO.ModulesPage.search_input, global.module_tech_name_mailchimp)
-                .waitForExist(this.selector.BO.ModulesPage.search_button, 3000)
+                .waitForExist(this.selector.BO.ModulesPage.search_button, 90000)
                 .click(this.selector.BO.ModulesPage.search_button)
                 .pause(3000)
                 .getText(this.selector.BO.ModulesPage.page_loaded).then(function (nbr) {
@@ -44,7 +44,7 @@ describe('Test n°2 = Check the mailchimp configuration', function () {
             }
             else {
                 this.client
-                    .waitForExist(this.selector.BO.MailChimpModulePage.configuration_button, 3000)
+                    .waitForExist(this.selector.BO.MailChimpModulePage.configuration_button, 90000)
                     .click(this.selector.BO.MailChimpModulePage.configuration_button)
                     .call(done)
             }
@@ -53,7 +53,7 @@ describe('Test n°2 = Check the mailchimp configuration', function () {
         it("should access to the module configuration  page", function (done) {
             global.fctname = this.test.title;
             this.client
-                .waitForExist(this.selector.BO.MailChimpModulePage.access_button, 3000)
+                .waitForExist(this.selector.BO.MailChimpModulePage.access_button, 90000)
                 .click(this.selector.BO.MailChimpModulePage.access_button)
                 .call(done)
         })
@@ -61,11 +61,11 @@ describe('Test n°2 = Check the mailchimp configuration', function () {
         it("should access to mailchimp", function (done) {
             global.fctname = this.test.title;
             this.client
-                .waitForExist(this.selector.BO.MailChimpModulePage.login_input, 3000)
+                .waitForExist(this.selector.BO.MailChimpModulePage.login_input, 90000)
                 .setValue(this.selector.BO.MailChimpModulePage.login_input, 'prestotests')
-                .waitForExist(this.selector.BO.MailChimpModulePage.password_input, 3000)
+                .waitForExist(this.selector.BO.MailChimpModulePage.password_input, 90000)
                 .setValue(this.selector.BO.MailChimpModulePage.password_input, 'Presto_tests1')
-                .waitForExist(this.selector.BO.MailChimpModulePage.login_button, 3000)
+                .waitForExist(this.selector.BO.MailChimpModulePage.login_button, 90000)
                 .click(this.selector.BO.MailChimpModulePage.login_button)
                 .call(done)
 
@@ -74,7 +74,7 @@ describe('Test n°2 = Check the mailchimp configuration', function () {
         it("should add a  new name list ", function (done) {
             global.fctname = this.test.title;
             this.client
-                .waitForExist(this.selector.BO.MailChimpModulePage.list_input, 3000)
+                .waitForExist(this.selector.BO.MailChimpModulePage.list_input, 90000)
                 .setValue(this.selector.BO.MailChimpModulePage.list_input, global.listNameInput)
                 .click(this.selector.BO.MailChimpModulePage.save_button)
                 .getText(this.selector.BO.MailChimpModulePage.connection_list).then(function (text) {
@@ -91,7 +91,7 @@ describe('Test n°2 = Check the mailchimp configuration', function () {
             global.fctname = this.test.title;
             this.client
                 .pause(3000)
-                .waitForExist(this.selector.BO.MailChimpModulePage.save_button, 3000)
+                .waitForExist(this.selector.BO.MailChimpModulePage.save_button, 90000)
                 .click(this.selector.BO.MailChimpModulePage.save_button)
                 .call(done)
         })
@@ -102,7 +102,7 @@ describe('Test n°2 = Check the mailchimp configuration', function () {
         it("should select a list", function (done) {
             global.fctname = this.test.title;
             this.client
-                .waitForExist(this.selector.BO.MailChimpModulePage.list_select, 2000)
+                .waitForExist(this.selector.BO.MailChimpModulePage.list_select, 90000)
                 .selectByVisibleText(this.selector.BO.MailChimpModulePage.list_select, global.listNameInput).getText('option:checked').then(function (selectValue) {
                 global.value = selectValue
                 should(global.value).be.equal(global.listNameInput)
