@@ -13,27 +13,34 @@ describe(' Test n°2 = Check the optimizing urls configuration', function () {
 
     after(common.after);
 
-
-
-
-
-
     describe("Check the optimizing urls tab", function (done) {
-    it('should add rule name ', function (done) {
-        global.fctname = this.test.title
-        this.client
-            .waitForExist(this.selector.BO.ModulePageSeoExpert.optimaze_url_tab, 90000)
-            .click(this.selector.BO.ModulePageSeoExpert.optimaze_url_tab)
-            .waitForExist(this.selector.BO.ModulePageSeoExpert.add_rule_button, 90000)
-            .click(this.selector.BO.ModulePageSeoExpert.add_rule_button)
-            .pause(90000)
-            .waitForExist(this.selector.BO.ModulePageSeoExpert.rule_name_input, 90000)
-            .setValue(this.selector.BO.ModulePageSeoExpert.rule_name_input, global.ruleNameInput)
-            .waitForExist(this.selector.BO.ModulePageSeoExpert.next_button, 90000)
-            .click(this.selector.BO.ModulePageSeoExpert.next_button)
-            .pause(2000)
-            .call(done)
-    })
+        it('should click on optimizing url tab ', function (done) {
+            global.fctname = this.test.title
+            this.client
+                .waitForExist(this.selector.BO.ModulePageSeoExpert.optimaze_url_tab, 90000)
+                .click(this.selector.BO.ModulePageSeoExpert.optimaze_url_tab)
+                .waitForExist(this.selector.BO.ModulePageSeoExpert.add_rule_button, 90000)
+                .click(this.selector.BO.ModulePageSeoExpert.add_rule_button)
+                .call(done);
+        });
+
+        it('should add a rule name ', function (done) {
+            global.fctname = this.test.title
+            this.client
+                .waitForExist(this.selector.BO.ModulePageSeoExpert.rule_name_input, 90000)
+                .setValue(this.selector.BO.ModulePageSeoExpert.rule_name_input, global.ruleNameInput)
+                .call(done);
+        });
+
+        it('should click on next button ', function (done) {
+            global.fctname = this.test.title
+            this.client
+                .waitForExist(this.selector.BO.ModulePageSeoExpert.next_button, 90000)
+                .click(this.selector.BO.ModulePageSeoExpert.next_button)
+                .pause(2000)
+                .call(done);
+        });
+
         it('should select a category', function (done) {
             global.fctname = this.test.title
             this.client
@@ -45,9 +52,10 @@ describe(' Test n°2 = Check the optimizing urls configuration', function () {
                 .waitForExist(this.selector.BO.ModulePageSeoExpert.next_button, 90000)
                 .click(this.selector.BO.ModulePageSeoExpert.next_button)
                 .pause(2000)
-                .call(done)
-        })
-        it('should configure the url', function (done) {
+                .call(done);
+        });
+
+        it('should configure the rule', function (done) {
             global.fctname = this.test.title
             this.client
                 .waitForExist(this.selector.BO.ModulePageSeoExpert.link_rewrite_input, 90000)
@@ -58,38 +66,47 @@ describe(' Test n°2 = Check the optimizing urls configuration', function () {
                 .click(this.selector.BO.ModulePageSeoExpert.description_url_select)
                 .waitForExist(this.selector.BO.ModulePageSeoExpert.reference_url_select, 90000)
                 .click(this.selector.BO.ModulePageSeoExpert.reference_url_select)
-                .pause(2000)
-                .waitForExist(this.selector.BO.ModulePageSeoExpert.save_button, 90000)
-                .click(this.selector.BO.ModulePageSeoExpert.save_button)
-                .call(done)
-        })
-        it('should apply the rule', function (done) {
+                .click(done);
+        });
+
+        it('should save the url form', function (done) {
             global.fctname = this.test.title
             this.client
-                .pause(4000)
+                .waitForExist(this.selector.BO.ModulePageSeoExpert.save_button, 90000)
+                .click(this.selector.BO.ModulePageSeoExpert.save_button)
+                .call(done);
+        });
+
+        it('should close the validation message ', function (done) {
+            global.fctname = this.test.title;
+            this.client
+                .pause(2000)
                 .waitForExist(this.selector.BO.ModulePageSeoExpert.close_button, 9000)
                 .click(this.selector.BO.ModulePageSeoExpert.close_button)
-                .pause(5000)
-                // .waitForExist(this.selector.BO.ModulePageSeoExpert.apply_rule_button,9000)
+        });
+
+
+        it('should click on apply rule', function (done) {
+            global.fctname = this.test.title
+            this.client
                 .waitForExist('//*[@id="cat_5"]/td[7]/div/div/a', 5000)
                 //   .click(this.selector.BO.ModulePageSeoExpert.apply_rule_button)
                 .click('//*[@id="cat_5"]/td[7]/div/div/a')
                 .pause(7000)
                 .waitForExist(this.selector.BO.ModulePageSeoExpert.close_button, 9000)
                 .click(this.selector.BO.ModulePageSeoExpert.close_button)
-            .call(done)
-    })
-});
+                .call(done);
+        });
+    });
 
-
-describe('Log out in Back Office', function (done) {
-    it('should log out successfully in BO', function (done) {
-        global.fctname = this.test.title;
-        this.client
-            .signoutBO()
-            .call(done);
-    })
-});
+    describe('Log out in Back Office', function (done) {
+        it('should log out successfully in BO', function (done) {
+            global.fctname = this.test.title;
+            this.client
+                .signoutBO()
+                .call(done);
+        })
+    });
 
 
 })
