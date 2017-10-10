@@ -15,7 +15,6 @@ describe('Test n°3 = Check the Url in Fo', function () {
 
     describe("Check the Url in FO", function (done) {
 
-
         it('should go to FO', function (done) {
             global.fctname = this.test.title
             this.client
@@ -24,6 +23,7 @@ describe('Test n°3 = Check the Url in Fo', function () {
                 .click('//*[@id="content"]/section/div/article/div/a/img')
                 .call(done);
         });
+
         it('should get name product', function (done) {
             global.fctname = this.test.title
             this.client
@@ -33,6 +33,7 @@ describe('Test n°3 = Check the Url in Fo', function () {
             })
                 .call(done);
         });
+
         it('should get description product', function (done) {
             global.fctname = this.test.title
             this.client
@@ -43,6 +44,7 @@ describe('Test n°3 = Check the Url in Fo', function () {
             })
                 .call(done);
         });
+
         it('should get reference product', function (done) {
             global.fctname = this.test.title
             this.client
@@ -54,7 +56,8 @@ describe('Test n°3 = Check the Url in Fo', function () {
             })
                 .call(done);
 
-        })
+        });
+
         it('should check the url form ', function (done) {
             global.fctname = this.test.title
             this.client
@@ -64,10 +67,6 @@ describe('Test n°3 = Check the Url in Fo', function () {
             })
                 .pause(90000)
                 .call(done);
-
         });
-
     });
-
-
 })

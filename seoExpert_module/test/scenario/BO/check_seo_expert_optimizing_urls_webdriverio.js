@@ -14,7 +14,7 @@ describe(' Test n°2 = Check the optimizing urls configuration', function () {
     after(common.after);
 
     describe("Check the optimizing urls tab", function (done) {
-        it('should click on optimizing url tab ', function (done) {
+        it('should add a new rule ', function (done) {
             global.fctname = this.test.title
             this.client
                 .waitForExist(this.selector.BO.ModulePageSeoExpert.optimaze_url_tab, 90000)
@@ -24,11 +24,20 @@ describe(' Test n°2 = Check the optimizing urls configuration', function () {
                 .call(done);
         });
 
-        it('should add a rule name ', function (done) {
+        it('should add the rule name ', function (done) {
             global.fctname = this.test.title
             this.client
                 .waitForExist(this.selector.BO.ModulePageSeoExpert.rule_name_input, 90000)
                 .setValue(this.selector.BO.ModulePageSeoExpert.rule_name_input, global.ruleNameInput)
+                .call(done);
+        });
+
+
+        it('should select the franch langauge ', function (done) {
+            global.fctname = this.test.title
+            this.client
+                .waitForExist('//*[@id="step-1"]/div[3]/div/div[1]/button/span[2]', 90000)
+                .selectByVisibleText('//*[@id="step-1"]/div[3]/div/div[1]/button/span[2]', 'Français')
                 .call(done);
         });
 
@@ -107,6 +116,5 @@ describe(' Test n°2 = Check the optimizing urls configuration', function () {
                 .call(done);
         })
     });
-
 
 })

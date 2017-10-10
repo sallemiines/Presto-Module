@@ -11,6 +11,7 @@ global.password = argv.PWD;
 global.module_tech_name = 'faviconotification';
 global.module_tech_name_prestafraud = 'prestafraud';
 global.module_tech_name_mailchimp = 'mailchimpintegration';
+global.module_tech_name_seo_expert='seoexpert';
 global.browser = argv.browser;
 global.saucelabs = argv.SAUCELABS;
 global._projectdir = path.join(__dirname, '..', '..');

@@ -19,6 +19,10 @@ describe('Allscenario', function () {
 
     // Test n°1 = Check the SeoExpert configuration
     require('./scenario/BO/check_seo_expert_configuration.webdriverio.js');
+    // Test n°2 = Check the url form
+    require('./scenario/BO/check_seo_expert_optimizing_urls_webdriverio.js');
+    // Test n°3= Check the url form in fo
+    require('./scenario/FO/check_seo_expert_urls_webdriverio.js');
 
 
 });
