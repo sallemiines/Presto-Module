@@ -12,6 +12,7 @@ global.module_tech_name = 'faviconotification';
 global.module_tech_name_prestafraud = 'prestafraud';
 global.module_tech_name_mailchimp = 'mailchimpintegration';
 global.module_tech_name_seo_expert='seoexpert';
+global.module_tech_name_youtubeVideo='blockyoutubevideos';
 global.browser = argv.browser;
 global.saucelabs = argv.SAUCELABS;
 global._projectdir = path.join(__dirname, '..', '..');
@@ -182,7 +183,12 @@ module.exports = {
 
             },
 
-        },
+            ModuleBlockYoutubeVideo: {
+                config_module_button :'//*[@id="modules-list-container-all"]/div/div/div/div[5]/div[2]/form/button',
+                pdf_logo:'//*[@id="documentation"]/div/a/img',
+                prestashop_link:'//*[@id="documentation"]/div/ul[2]/li/a',
+
+            },
 
         //FO
         FO: {
@@ -245,4 +251,5 @@ module.exports = {
         should(err).be.not.defined;
         should(existing).be.true;
     }
-};
+}}
+;
