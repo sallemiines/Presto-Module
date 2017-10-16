@@ -3,7 +3,7 @@ var should = require('should');
 var common = require('../../../../common/common.webdriverio');
 var globals = require('../../../../common/globals.webdriverio.js');
 
-describe('Test n°1 = Check the documentation tab', function () {
+describe('Test n°2 = Check the documentation tab', function () {
     common.initMocha.call(this);
 
     before(function (done) {

@@ -23,7 +23,10 @@ global.my_src_image2 = "";
 
 //MailChimp Module globals
 global.listNameInput = 'Test_list' + date_time;
-
+//BlockYoutubeVideo Module globals
+global.bannerInput = 'Video_test' + date_time;
+global.apiKey= 'AIzaSyCOtdBoSxX3pELiEQHNE47f7dCT0ptJzRg';
+global.videoUrlInput='https://www.youtube.com/watch?v=qRddgO4zPqo&list=PLGV9IzoUU7REWIyuJOQG064Xdk0S222SB';
 //SeoExpert  Module globals
 global.ruleNameInput = 'Test_rule' + date_time;
 // Upela Module globals
