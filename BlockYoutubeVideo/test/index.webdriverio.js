@@ -17,9 +17,7 @@ describe('Allscenario', function () {
             .call(done);
     });
 
-    // /*-->  Test n°1 =Connection with Google  */
 
-   // require('./scenario/FO/check_api_google.webdriverio.js');
 
     // /*--> Test n°2 = Check the documentation tab
     require('./scenario/BO/check_block_youtube_video_documentation_tab.webdriverio.js');

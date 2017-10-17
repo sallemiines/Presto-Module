@@ -50,19 +50,20 @@ describe('Test n°4 = Update product', function () {
             this.client
                 .waitForExist('//*[@id="hooks"]/div/div/div/div/div/div[2]/div/div/div/div[3]/div/button', 3000)
                 .click('//*[@id="hooks"]/div/div/div/div/div/div[2]/div/div/div/div[3]/div/button')
-                    .waitForExist('//*[@id="youtube_custom_title_1"]',9000)
-                    .execute(function (videoname) {
-                        document.querySelector('//*[@id="youtube_custom_title_1"]').value = videoname;
-                    },'Test video title')
-
-                    .pause(3000)
-                .waitForExist('//*[@id="youtube_suggest_product_video_search"]/div[8]/div', 9000)
-                .click('//*[@id="youtube_suggest_product_video_search"]/div[8]/div')
-                .waitForExist('#url_youtube_input', 9000)
-               // .execute(function (videoname) {
-               //     document.querySelector('#url_youtube_input').value = videoname;
-               // }, global.videoUrlInput)
-                .setValue('//*[@id="youtube_suggest_product_video_search"]/div[8]/div',global.videoUrlInput)
+                //    .waitForExist('//*[@id="youtube_custom_title_1"]',9000)
+                //    .execute(function (videoname) {
+                //        document.querySelector('//*[@id="youtube_custom_title_1"]').value = videoname;
+                //    },'Test video title')
+//
+                   // .pause(3000)
+                //.waitForExist('//*[@id="youtube_suggest_product_video_search"]/div[8]/div/label', 9000)
+                //.click('//*[@id="youtube_suggest_product_video_search"]/div[8]/div/label')
+            // //   .waitForExist('//*[@id="url_youtube_input"]', 9000)
+            //    .execute(function (videoname) {
+             //       document.querySelector('//*[@id="url_youtube_input"]').value = videoname;
+             //   }, 'https://www.youtube.com/watch?v=tDmL86bOkCY')
+                .waitForExist('//*[@id="url_youtube_input"]',9000)
+                .setValue('//*[@id="url_youtube_input"]','https://www.youtube.com/watch?v=tDmL86bOkCY')
                 .pause(2000)
                 .call(done)
 
