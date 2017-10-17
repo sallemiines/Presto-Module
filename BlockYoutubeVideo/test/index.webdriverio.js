@@ -16,8 +16,6 @@ describe('Allscenario', function () {
             .end()
             .call(done);
     });
-
-
     // /*--> Test n°1 =Connect to BO &  Check the documentation tab
     require('./scenario/BO/check_block_youtube_video_documentation_tab.webdriverio.js');
     // /*-->  Test n°2 = configure the  blockYoutubeModule

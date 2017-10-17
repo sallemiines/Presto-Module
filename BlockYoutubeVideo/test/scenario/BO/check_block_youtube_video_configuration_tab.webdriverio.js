@@ -67,7 +67,6 @@ describe('Test n°2 = configure the  blockYoutubeModule', function () {
         it('should check the title position', function (done) {
             global.fctname = this.test.title
             this.client
-
                 .waitForExist(this.selector.BO.ModuleBlockYoutubeVideo.title_position_select, 9000)
                 .click(this.selector.BO.ModuleBlockYoutubeVideo.title_position_select)
                 .selectByValue(this.selector.BO.ModuleBlockYoutubeVideo.title_position_select, 0)
@@ -82,9 +81,6 @@ describe('Test n°2 = configure the  blockYoutubeModule', function () {
                 .click(this.selector.BO.ModuleBlockYoutubeVideo.update_button)
                 .call(done);
         });
-
     });
-
-
 })
 

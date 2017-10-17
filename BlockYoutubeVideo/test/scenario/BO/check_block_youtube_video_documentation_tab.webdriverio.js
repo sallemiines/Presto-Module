@@ -60,8 +60,8 @@ describe('Test n°1 = Check the documentation tab', function () {
             }
         });
     });
-    describe("Check the links direction in documentation tab ", function (done) {
 
+    describe("Check the links direction in documentation tab ", function (done) {
         it('should click on pdf logo ', function (done) {
             global.fctname = this.test.title
             this.client
@@ -89,16 +89,11 @@ describe('Test n°1 = Check the documentation tab', function () {
                 return this.switchTab(handles.value[handles.value.length - 1])
             })
                 .pause(7000)
-
                 .windowHandles().then(function (handles) {
                 return this.switchTab(handles.value[0])
             })
                 .pause(9000)
                 .call(done);
         });
-
-
     });
-
-
 })

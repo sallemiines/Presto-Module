@@ -24,8 +24,8 @@ describe('Test n°3 = Update product & check it in FO', function () {
                 .waitForExist(this.selector.BO.ProductSetting.product_menu, 90000)
                 .click(this.selector.BO.ProductSetting.product_menu)
                 .call(done)
-
         });
+
         it('should choose product ', function (done) {
             global.fctname = this.test.title
             this.client
@@ -42,7 +42,6 @@ describe('Test n°3 = Update product & check it in FO', function () {
                 .waitForExist(this.selector.BO.ProductSetting.modules_button, 9000)
                 .click(this.selector.BO.ProductSetting.modules_button)
                 .call(done)
-
         });
 
         it('should click on configurer  ', function (done) {
@@ -53,6 +52,7 @@ describe('Test n°3 = Update product & check it in FO', function () {
                 .pause(3000)
                 .call(done);
         });
+
         it('should select type of language', function (done) {
             global.fctname = this.test.title
             this.client
@@ -82,6 +82,7 @@ describe('Test n°3 = Update product & check it in FO', function () {
                 .pause(3000)
                 .call(done)
         });
+
         it('should add url video ', function (done) {
             global.fctname = this.test.title
             this.client
@@ -108,8 +109,8 @@ describe('Test n°3 = Update product & check it in FO', function () {
                 .click(this.selector.BO.ProductSetting.view_button)
                 .pause(5000)
                 .call(done)
-
         })
+
         it('should detect if the video is visible', function () {
             global.fctname = this.test.title;
             this.client
@@ -119,8 +120,6 @@ describe('Test n°3 = Update product & check it in FO', function () {
             })
                 .call(done)
         })
-
-
     });
 
 })
