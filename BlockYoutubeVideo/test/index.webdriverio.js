@@ -18,14 +18,10 @@ describe('Allscenario', function () {
     });
 
 
-
-    // /*--> Test n°2 = Check the documentation tab
+    // /*--> Test n°1 =Connect to BO &  Check the documentation tab
     require('./scenario/BO/check_block_youtube_video_documentation_tab.webdriverio.js');
-    // /*-->  Test n°3 = Check the blockYoutubeModuleConfiguration
+    // /*-->  Test n°2 = configure the  blockYoutubeModule
     require('./scenario/BO/check_block_youtube_video_configuration_tab.webdriverio.js');
-    // /*-->  Test n°4 = Update product
+    // /*-->  Test n°3 = Update product & check it in FO
     require('./scenario/BO/check_video_in_product_webdriverio.js');
-    // /*-->  Test n°5 = Check the video in FO
-   // require('./scenario/FO/check_Fo.webdriverio_webdriverio.js');
-
 });

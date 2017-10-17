@@ -3,7 +3,7 @@ var should = require('should');
 var common = require('../../../../common/common.webdriverio');
 var globals = require('../../../../common/globals.webdriverio.js');
 
-describe('Test n°4 = Update product', function () {
+describe('Test n°3 = Update product & check it in FO', function () {
     common.initMocha.call(this);
 
     before(function (done) {
@@ -18,11 +18,11 @@ describe('Test n°4 = Update product', function () {
             global.fctname = this.test.title
             this.client
                 .pause(3000)
-                .waitForExist('//*[@id="subtab-AdminCatalog"]/a', 90000)
-                .moveToObject('//*[@id="subtab-AdminCatalog"]/a')
+                .waitForExist(this.selector.BO.ProductSetting.categorie_menu, 90000)
+                .moveToObject(this.selector.BO.ProductSetting.categorie_menu)
                 .pause(5000)
-                .waitForExist('//*[@id="subtab-AdminProducts"]/a', 90000)
-                .click('//*[@id="subtab-AdminProducts"]/a')
+                .waitForExist(this.selector.BO.ProductSetting.product_menu, 90000)
+                .click(this.selector.BO.ProductSetting.product_menu)
                 .call(done)
 
         });
@@ -30,8 +30,8 @@ describe('Test n°4 = Update product', function () {
             global.fctname = this.test.title
             this.client
                 .pause(5000)
-                .waitForExist('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr/td[9]/div/div/a[1]/i', 9000)
-                .click('//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr/td[9]/div/div/a[1]/i')
+                .waitForExist(this.selector.BO.ProductSetting.update_product_icon, 9000)
+                .click(this.selector.BO.ProductSetting.update_product_icon)
                 .pause(3000)
                 .call(done)
         });
@@ -39,8 +39,8 @@ describe('Test n°4 = Update product', function () {
         it('should click on module in page product ', function (done) {
             global.fctname = this.test.title
             this.client
-                .waitForExist('//*[@id="tab_hooks"]/a', 9000)
-                .click('//*[@id="tab_hooks"]/a')
+                .waitForExist(this.selector.BO.ProductSetting.modules_button, 9000)
+                .click(this.selector.BO.ProductSetting.modules_button)
                 .call(done)
 
         });
@@ -48,50 +48,47 @@ describe('Test n°4 = Update product', function () {
         it('should click on configurer  ', function (done) {
             global.fctname = this.test.title
             this.client
-                .waitForExist('//*[@id="hooks"]/div/div/div/div/div/div[2]/div/div/div/div[3]/div/button', 3000)
-                .click('//*[@id="hooks"]/div/div/div/div/div/div[2]/div/div/div/div[3]/div/button')
+                .waitForExist(this.selector.BO.ProductSetting.configure_button, 3000)
+                .click(this.selector.BO.ProductSetting.configure_button)
+                .pause(3000)
                 .call(done);
         });
-        it('should select type of language', function (done)
-        {
+        it('should select type of language', function (done) {
             global.fctname = this.test.title
             this.client
-                .waitForExist('//*[@id="youtube_suggest_language"]', 9000)
-                .click('//*[@id="youtube_suggest_language"]')
-                .selectByVisibleText('//*[@id="youtube_suggest_language"]',"Toutes les langues")
-                .pause(3000)
+                .waitForExist(this.selector.BO.ProductSetting.language_list, 90000)
+                .click(this.selector.BO.ProductSetting.language_list)
+                .selectByValue(this.selector.BO.ProductSetting.language_list, 0)
+                .pause(7000)
                 .call(done);
         });
 
         it('should add title video', function (done) {
-          global.fctname= this.test.title
-          this.client
-              .waitForExist('//*[@id="youtube_custom_title_1"]',9000)
-              .setValue('//*[@id="youtube_custom_title_1"]', "Test video")
-              .pause(3000)
-              .call(done);
+            global.fctname = this.test.title
+            this.client
+                .waitForExist(this.selector.BO.ProductSetting.title_video_input, 90000)
+                .click(this.selector.BO.ProductSetting.title_video_input)
+                .execute(function (title) {
+                    document.querySelector('input#youtube_custom_title_1').value = title;
+                }, global.titleVideo)
+                .call(done);
         });
 
         it('should select method  ', function (done) {
             global.fctname = this.test.title
             this.client
-                .waitForExist('//*[@id="youtube_suggest_product_video_search"]/div[8]/div/label',9000)
-                .click('//*[@id="youtube_suggest_product_video_search"]/div[8]/div/label')
+                .waitForExist(this.selector.BO.ProductSetting.view_button, 9000)
+                .click(this.selector.BO.ProductSetting.view_button)
                 .pause(3000)
                 .call(done)
-
-            // //   .waitForExist('//*[@id="url_youtube_input"]', 9000)
-            //    .execute(function (videoname) {
-             //       document.querySelector('//*[@id="url_youtube_input"]').value = videoname;
-             //   }, 'https://www.youtube.com/watch?v=tDmL86bOkCY')
         });
-            it('should add url video ', function (done) {
-                global.fctname = this.test.title
-                this.client
-                .waitForExist('//*[@id="url_youtube_input"]',9000)
-                .setValue('//*[@id="url_youtube_input"]',global.videoUrlInput)
-                .waitForExist('//*[@id="url_youtube_input_div"]/div/div', 9000)
-                .click('//*[@id="url_youtube_input_div"]/div/div')
+        it('should add url video ', function (done) {
+            global.fctname = this.test.title
+            this.client
+                .waitForExist(this.selector.BO.ProductSetting.url_input, 9000)
+                .setValue(this.selector.BO.ProductSetting.url_input, global.videoUrlInput)
+                .waitForExist(this.selector.BO.ProductSetting.save_url_button, 9000)
+                .click(this.selector.BO.ProductSetting.save_url_button)
                 .pause(2000)
                 .call(done)
         });
@@ -99,42 +96,32 @@ describe('Test n°4 = Update product', function () {
         it('should click on  save ', function (done) {
             global.fctname = this.test.title
             this.client
-                .waitForExist('//*[@id="submit"]', 3000)
-                .click('//*[@id="submit"]')
+                .waitForExist(this.selector.BO.ProductSetting.save_button, 3000)
+                .click(this.selector.BO.ProductSetting.save_button)
                 .call(done)
         });
 
         it('Should click on visualiser', function (done) {
             global.fctname = this.test.title
             this.client
-                .waitForExist('//*[@id="product_form_preview_btn"]', 9000)
-                .click('//*[@id="product_form_preview_btn"]')
-                .pause(90000)
+                .waitForExist(this.selector.BO.ProductSetting.view_button, 9000)
+                .click(this.selector.BO.ProductSetting.view_button)
+                .pause(5000)
                 .call(done)
 
         })
-  //it('should detect if the video is visible', function () {
-  //    global.fctname = this.test.title;
-  //    this.client
-  //        .isVisible(global.bannerInput).then(function (isVisible) {
-  //         var banner_Txt = isVisible;
-  //    })
-  //        .call(done)
-  //})
-
+        it('should detect if the video is visible', function () {
+            global.fctname = this.test.title;
+            this.client
+                .pause(5000)
+                .isVisible(".youtube-header-banner page-product-heading.h3").then(function (isVisible) {
+                should(isVisible).to.be.equal(true)
+            })
+                .call(done)
+        })
 
 
     });
-
-    //  describe('Log out in Back Office', function (done) {
-    //      it('should log out successfully in BO', function (done) {
-    //          global.fctname = this.test.title;
-    //          this.client
-    //              .signoutBO()
-    //              .call(done);
-    //      })
-    //  });
-
 
 })
 

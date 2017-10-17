@@ -3,7 +3,7 @@ var should = require('should');
 var common = require('../../../../common/common.webdriverio');
 var globals = require('../../../../common/globals.webdriverio.js');
 
-describe('Test n°2 = Check the documentation tab', function () {
+describe('Test n°1 = Check the documentation tab', function () {
     common.initMocha.call(this);
 
     before(function (done) {
@@ -20,7 +20,6 @@ describe('Test n°2 = Check the documentation tab', function () {
                 .waitForExist(this.selector.BO.Common.menu, 90000)
                 .call(done);
         });
-
     });
 
     describe('Should access to the modules page', function (done) {
@@ -90,8 +89,14 @@ describe('Test n°2 = Check the documentation tab', function () {
                 return this.switchTab(handles.value[handles.value.length - 1])
             })
                 .pause(7000)
+
+                .windowHandles().then(function (handles) {
+                return this.switchTab(handles.value[0])
+            })
+                .pause(9000)
                 .call(done);
         });
+
 
     });
 

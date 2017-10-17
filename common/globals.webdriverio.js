@@ -27,6 +27,7 @@ global.listNameInput = 'Test_list' + date_time;
 global.bannerInput = 'Video_test' + date_time;
 global.apiKey= 'AIzaSyCOtdBoSxX3pELiEQHNE47f7dCT0ptJzRg';
 global.videoUrlInput='https://www.youtube.com/watch?v=qRddgO4zPqo&list=PLGV9IzoUU7REWIyuJOQG064Xdk0S222SB';
+global.titleVideo = 'Test_video_product'
 // Upela Module globals
 global.webserviceKey = '';
 global.dateTimeNumber = new Date().getTime();
@@ -67,7 +68,8 @@ module.exports = {
                 uninstall_module_button: '//div[@data-tech-name="' + module_tech_name + '" and not(@style)]//button[@class="dropdown-item module_action_menu_uninstall"]',
                 modal_confirm_uninstall: '//*[@id="module-modal-confirm-' + module_tech_name + '-uninstall" and @class="modal modal-vcenter fade in"]//a[@class="btn btn-primary uppercase module_action_modal_uninstall"]',
                 module_menu_button: '[class="btn btn-primary-outline  dropdown-toggle"]',
-                enable_module_button: '[class="dropdown-item module_action_menu_enable"]'
+                enable_module_button: '[class="dropdown-item module_action_menu_enable"]',
+
             },
 
             MailChimpModulePage: {
@@ -168,10 +170,27 @@ module.exports = {
                 api_key_input : '//*[@id="google_api_key"]',
                 position_select: '//*[@id="page_position"]',
                 banner_button :'//*[@id="youtube_banner_switch"]/label[1]',
-                banner_txt: '//*[@id="youtube_banner_text_1"]',
+                banner_txt: '#youtube_banner_text_1',
                 title_position_button: '//*[@id="custom_title_switch"]/label[1]',
                 title_position_select:'//*[@id="custom_title_position"]',
                 update_button:'//*[@id="config"]/div[1]/form/center/input',
+
+            },
+            ProductSetting : {
+
+                categorie_menu:'//*[@id="subtab-AdminCatalog"]/a',
+                product_menu:'//*[@id="subtab-AdminProducts"]/a',
+                modules_button:'//*[@id="tab_hooks"]/a',
+                configure_button:'//*[@id="hooks"]/div/div/div/div/div/div[2]/div/div/div/div[3]/div/button',
+                language_list :'//*[@id="youtube_suggest_language"]',
+                title_video_input:'//*[@id="youtube_custom_title_1"]',
+                view_button:'//*[@id="product_form_preview_btn"]',
+                methode_button:'//*[@id="youtube_suggest_product_video_search"]/div[8]/div/label',
+                url_input:'//*[@id="url_youtube_input"]',
+                save_url_button:'//*[@id="url_youtube_input_div"]/div/div',
+                save_button:'//*[@id="submit"]',
+                update_product_icon:'//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr/td[9]/div/div/a[1]/i',
+
 
             },
 
@@ -201,11 +220,10 @@ module.exports = {
             //Product page selectors
             ProductPage: {
                 add_to_cart_button: '.btn.btn-primary.add-to-cart',
-
                 product_choice: '//*[@id="content"]/section[1]/div/article[1]/div/div[1]/h1/a',
                 product_image: '#content',
                 validate_cart_choice_button: '//*[@id="add-to-cart-or-refresh"]/div[2]/div[1]/div[2]/button',
-                modal_valid_button: '//*[@id="blockcart-modal"]/div/div/div[2]/div/div[2]/div/div/a'
+                modal_valid_button: '//*[@id="blockcart-modal"]/div/div/div[2]/div/div[2]/div/div/a',
             },
 
             //Cart summary selectors
