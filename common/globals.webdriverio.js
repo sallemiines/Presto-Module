@@ -27,8 +27,6 @@ global.listNameInput = 'Test_list' + date_time;
 global.bannerInput = 'Video_test' + date_time;
 global.apiKey= 'AIzaSyCOtdBoSxX3pELiEQHNE47f7dCT0ptJzRg';
 global.videoUrlInput='https://www.youtube.com/watch?v=qRddgO4zPqo&list=PLGV9IzoUU7REWIyuJOQG064Xdk0S222SB';
-//SeoExpert  Module globals
-global.ruleNameInput = 'Test_rule' + date_time;
 // Upela Module globals
 global.webserviceKey = '';
 global.dateTimeNumber = new Date().getTime();
@@ -162,34 +160,18 @@ module.exports = {
                 save_button: '//*[@id="store_fieldset_contact"]/div[3]/button',
 
             },
-
-            ModulePageSeoExpert: {
-                config_module_button: '//*[@id="modules-list-container-all"]/div[1]/div/div/div[5]/div[2]/form/button',
-                pdf_logo: '//*[@id="documentation"]/div/a/img',
-                user_guide_link: '//*[@id="documentation"]/div/div/p[1]/a',
-                livre_blanc_seo_link: '//*[@id="documentation"]/div/div/p[2]/a',
-                official_documentation_link: '//*[@id="documentation"]/div/div/p[3]/a',
-                contact_link: '//*[@id="documentation"]/p[5]/a',
-                contact_tab: '//*[@id="modulecontent"]/div[1]/div[1]/a[5]',
-                optimaze_url_tab: '//*[@id="modulecontent"]/div[1]/div[1]/a[2]',
-                add_rule_button: '//*[@id="table-urls-1"]/a[2]',
-                rule_name_input: '//*[@id="rule_name"]',
-                next_button: '//*[@id="next-step"]',
-                categorie_check: '//*[@id="radios-0"]/label/input',
-                link_rewrite_input: '//*[@id="link_rewrite"]',
-                product_name_url_select: '//*[@id="step-3"]/div[3]/ul/li[1]/a',
-                description_url_select: '//*[@id="step-3"]/div[3]/ul/li[2]/a',
-                reference_url_select: '//*[@id="step-3"]/div[3]/ul/li[4]/a',
-                save_button: '//*[@id="btn-save"]',
-                close_button: '/html/body/div[6]/div/div/div[1]/div/div[2]/button',
-                //apply_rule_button :'//*[@id="table-urls-1"]/a[1]',
-
-            },
-
             ModuleBlockYoutubeVideo: {
                 config_module_button :'//*[@id="modules-list-container-all"]/div/div/div/div[5]/div[2]/form/button',
                 pdf_logo:'//*[@id="documentation"]/div/a/img',
                 prestashop_link:'//*[@id="documentation"]/div/ul[2]/li/a',
+                configuration_tab :'//*[@id="modulecontent"]/div[1]/div[1]/a[2]',
+                api_key_input : '//*[@id="google_api_key"]',
+                position_select: '//*[@id="page_position"]',
+                banner_button :'//*[@id="youtube_banner_switch"]/label[1]',
+                banner_txt: '//*[@id="youtube_banner_text_1"]',
+                title_position_button: '//*[@id="custom_title_switch"]/label[1]',
+                title_position_select:'//*[@id="custom_title_position"]',
+                update_button:'//*[@id="config"]/div[1]/form/center/input',
 
             },
 

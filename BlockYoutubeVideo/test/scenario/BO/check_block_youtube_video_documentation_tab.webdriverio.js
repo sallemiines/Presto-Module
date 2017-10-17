@@ -13,7 +13,6 @@ describe('Test n°2 = Check the documentation tab', function () {
 
     after(common.after);
 
-
     describe('Log in in Back Office', function (done) {
         it('should log in successfully in BO', function (done) {
             this.client
@@ -21,6 +20,7 @@ describe('Test n°2 = Check the documentation tab', function () {
                 .waitForExist(this.selector.BO.Common.menu, 90000)
                 .call(done);
         });
+
     });
 
     describe('Should access to the modules page', function (done) {
@@ -30,11 +30,12 @@ describe('Test n°2 = Check the documentation tab', function () {
                 .pause(3000)
                 .waitForExist(this.selector.BO.ModulesPage.modules_subtab, 90000)
                 .click(this.selector.BO.ModulesPage.modules_subtab)
-                .call(done)
-        })
+                .call(done);
+        });
+
         it('should go to the module', function (done) {
             this.client
-                .waitForExist(this.selector.BO.ModulesPage.search_input, 3000)
+                .waitForExist(this.selector.BO.ModulesPage.search_input, 9000)
                 .setValue(this.selector.BO.ModulesPage.search_input, global.module_tech_name_youtubeVideo)
                 .waitForExist(this.selector.BO.ModulesPage.search_button, 3000)
                 .click(this.selector.BO.ModulesPage.search_button)
@@ -54,7 +55,7 @@ describe('Test n°2 = Check the documentation tab', function () {
             }
             else {
                 this.client
-                    .waitForExist(this.selector.BO.ModuleBlockYoutubeVideo.config_module_button, 3000)
+                    .waitForExist(this.selector.BO.ModuleBlockYoutubeVideo.config_module_button, 9000)
                     .click(this.selector.BO.ModuleBlockYoutubeVideo.config_module_button)
                     .call(done);
             }
@@ -66,24 +67,23 @@ describe('Test n°2 = Check the documentation tab', function () {
             global.fctname = this.test.title
             this.client
                 .pause(3000)
-                .waitForExist(this.selector.BO.ModuleBlockYoutubeVideo.pdf_logo, 3000)
+                .waitForExist(this.selector.BO.ModuleBlockYoutubeVideo.pdf_logo, 9000)
                 .click(this.selector.BO.ModuleBlockYoutubeVideo.pdf_logo)
                 .windowHandles().then(function (handles) {
                 return this.switchTab(handles.value[handles.value.length - 1])
             })
                 .pause(7000)
-                .call(done)
-        })
+                .call(done);
+        });
 
         it('should click on prestashop documentation link ', function (done) {
             global.fctname = this.test.title
             this.client
                 .windowHandles().then(function (handles) {
-                //this.close(handles.value[handles.value.length - 1])
                 return this.switchTab(handles.value[0])
             })
                 .pause(3000)
-                .waitForExist(this.selector.BO.ModuleBlockYoutubeVideo.prestashop_link, 3000)
+                .waitForExist(this.selector.BO.ModuleBlockYoutubeVideo.prestashop_link, 9000)
                 .click(this.selector.BO.ModuleBlockYoutubeVideo.prestashop_link)
                 .windowHandles().then(function (handles) {
                 console.log(handles);

@@ -22,66 +22,66 @@ describe('Test n°3 = Configure the module', function () {
                 return this.switchTab(handles.value[0])
             })
                 .pause(3000)
-                .waitForExist('//*[@id="modulecontent"]/div[1]/div[1]/a[2]', 3000)
-                .click('//*[@id="modulecontent"]/div[1]/div[1]/a[2]')
-                .waitForExist('//*[@id="google_api_key"]', 3000)
-                .setValue('//*[@id="google_api_key"]', global.apiKey)
+                .waitForExist(this.selector.BO.ModuleBlockYoutubeVideo.configuration_tab, 9000)
+                .click(this.selector.BO.ModuleBlockYoutubeVideo.configuration_tab)
+                .waitForExist(this.selector.BO.ModuleBlockYoutubeVideo.api_key_input, 9000)
+                .setValue(this.selector.BO.ModuleBlockYoutubeVideo.api_key_input, global.apiKey)
                 .call(done);
         });
 
         it('should choose the position ', function (done) {
             global.fctname = this.test.title
             this.client
-                .waitForExist('//*[@id="page_position"]', 3000)
-                .click('//*[@id="page_position"]')
-                .selectByVisibleText('//*[@id="page_position"]', 'Beneath the product buttons')
+                .waitForExist(this.selector.BO.ModuleBlockYoutubeVideo.position_select, 9000)
+                .click(this.selector.BO.ModuleBlockYoutubeVideo.position_select)
+                .selectByVisibleText(this.selector.BO.ModuleBlockYoutubeVideo.position_select, 'Beneath the product buttons')
                 .call(done)
-        })
+        });
 
         it('should add a banner above the video ', function (done) {
             global.fctname = this.test.title
             this.client
                 .pause(7000)
-                .waitForExist('//*[@id="youtube_banner_switch"]/label[1]', 3000)
-                .click('//*[@id="youtube_banner_switch"]/label[1]')
+                .waitForExist(this.selector.BO.ModuleBlockYoutubeVideo.banner_button, 9000)
+                .click(this.selector.BO.ModuleBlockYoutubeVideo.banner_button)
                 .call(done);
         });
+
         it('should add a banner text ', function (done) {
             global.fctname = this.test.title
             this.client
                 .pause(5000)
-              .waitForExist('//*[@id="youtube_banner_text_1"]', 3000)
-              .execute(function (banner_name) {
-                  document.querySelector('//*[@id="youtube_banner_text_1"]').value = banner_name;
-              }, global.bannerInput)
-               // .setValue('//*[@id="youtube_banner_text_1"]', global.bannerInput)
+                .waitForExist(this.selector.BO.ModuleBlockYoutubeVideo.banner_txt, 9000)
+                .execute(function (banner_txt) {
+                    document.querySelector(this.selector.BO.ModuleBlockYoutubeVideo.banner_txt).value = banner_txt;
+                }, global.bannerInput)
                 .call(done);
         });
 
         it('should check the title  ', function (done) {
             global.fctname = this.test.title
             this.client
-                .waitForExist('//*[@id="custom_title_switch"]/label[1]', 3000)
-                .click('//*[@id="custom_title_switch"]/label[1]')
+                .waitForExist(this.selector.BO.ModuleBlockYoutubeVideo.title_position_button, 9000)
+                .click(this.selector.BO.ModuleBlockYoutubeVideo.title_position_button)
                 .call(done);
         });
+
         it('should check the title position', function (done) {
             global.fctname = this.test.title
             this.client
 
-                .waitForExist('//*[@id="custom_title_position"]', 3000)
-                .click('//*[@id="custom_title_position"]')
-                .selectByVisibleText('//*[@id="custom_title_position"]', 'Sous la vidéo')
+                .waitForExist(this.selector.BO.ModuleBlockYoutubeVideo.title_position_select, 9000)
+                .click(this.selector.BO.ModuleBlockYoutubeVideo.title_position_select)
+                .selectByVisibleText(this.selector.BO.ModuleBlockYoutubeVideo.title_position_select, 'Sous la vidéo')
                 .call(done);
         });
-
 
         it('should click on update button', function (done) {
             global.fctname = this.test.title
             this.client
 
-                .waitForExist('//*[@id="config"]/div[1]/form/center/input', 3000)
-                .click('//*[@id="config"]/div[1]/form/center/input')
+                .waitForExist(this.selector.BO.ModuleBlockYoutubeVideo.update_button, 9000)
+                .click(this.selector.BO.ModuleBlockYoutubeVideo.update_button)
                 .call(done);
         });
 
