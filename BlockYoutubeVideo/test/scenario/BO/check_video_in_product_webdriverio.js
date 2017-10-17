@@ -45,35 +45,60 @@ describe('Test n°4 = Update product', function () {
 
         });
 
-        it('should configure the video ', function (done) {
+        it('should click on configurer  ', function (done) {
             global.fctname = this.test.title
             this.client
                 .waitForExist('//*[@id="hooks"]/div/div/div/div/div/div[2]/div/div/div/div[3]/div/button', 3000)
                 .click('//*[@id="hooks"]/div/div/div/div/div/div[2]/div/div/div/div[3]/div/button')
-                //    .waitForExist('//*[@id="youtube_custom_title_1"]',9000)
-                //    .execute(function (videoname) {
-                //        document.querySelector('//*[@id="youtube_custom_title_1"]').value = videoname;
-                //    },'Test video title')
-//
-                   // .pause(3000)
-                //.waitForExist('//*[@id="youtube_suggest_product_video_search"]/div[8]/div/label', 9000)
-                //.click('//*[@id="youtube_suggest_product_video_search"]/div[8]/div/label')
+                .call(done);
+        });
+        it('should select type of language', function (done)
+        {
+            global.fctname = this.test.title
+            this.client
+                .waitForExist('//*[@id="youtube_suggest_language"]', 9000)
+                .click('//*[@id="youtube_suggest_language"]')
+                .selectByVisibleText('//*[@id="youtube_suggest_language"]',"Toutes les langues")
+                .pause(3000)
+                .call(done);
+        });
+
+        it('should add title video', function (done) {
+          global.fctname= this.test.title
+          this.client
+              .waitForExist('//*[@id="youtube_custom_title_1"]',9000)
+              .setValue('//*[@id="youtube_custom_title_1"]', "Test video")
+              .pause(3000)
+              .call(done);
+        });
+
+        it('should select method  ', function (done) {
+            global.fctname = this.test.title
+            this.client
+                .waitForExist('//*[@id="youtube_suggest_product_video_search"]/div[8]/div/label',9000)
+                .click('//*[@id="youtube_suggest_product_video_search"]/div[8]/div/label')
+                .pause(3000)
+                .call(done)
+
             // //   .waitForExist('//*[@id="url_youtube_input"]', 9000)
             //    .execute(function (videoname) {
              //       document.querySelector('//*[@id="url_youtube_input"]').value = videoname;
              //   }, 'https://www.youtube.com/watch?v=tDmL86bOkCY')
+        });
+            it('should add url video ', function (done) {
+                global.fctname = this.test.title
+                this.client
                 .waitForExist('//*[@id="url_youtube_input"]',9000)
-                .setValue('//*[@id="url_youtube_input"]','https://www.youtube.com/watch?v=tDmL86bOkCY')
+                .setValue('//*[@id="url_youtube_input"]',global.videoUrlInput)
+                .waitForExist('//*[@id="url_youtube_input_div"]/div/div', 9000)
+                .click('//*[@id="url_youtube_input_div"]/div/div')
                 .pause(2000)
                 .call(done)
-
         });
 
         it('should click on  save ', function (done) {
             global.fctname = this.test.title
             this.client
-                .waitForExist('//*[@id="url_youtube_input_div"]/div/div', 9000)
-                .click('//*[@id="url_youtube_input_div"]/div/div')
                 .waitForExist('//*[@id="submit"]', 3000)
                 .click('//*[@id="submit"]')
                 .call(done)
@@ -88,15 +113,15 @@ describe('Test n°4 = Update product', function () {
                 .call(done)
 
         })
-        //    it('should detect if the video is visible', function () {
-        //        global.fctname = this.test.title;
-        //        this.client
-        //            .isVisible(global.bannerInput).then(function (isVisible) {
-        //             var banner_Txt = isVisible;
-        //        })
-        //            .call(done)
-        //    })
-//
+  //it('should detect if the video is visible', function () {
+  //    global.fctname = this.test.title;
+  //    this.client
+  //        .isVisible(global.bannerInput).then(function (isVisible) {
+  //         var banner_Txt = isVisible;
+  //    })
+  //        .call(done)
+  //})
+
 
 
     });

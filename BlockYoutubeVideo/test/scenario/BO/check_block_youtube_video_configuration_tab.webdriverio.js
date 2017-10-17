@@ -50,11 +50,11 @@ describe('Test n°3 = Configure the module', function () {
             global.fctname = this.test.title
             this.client
                 .pause(5000)
-            //    .waitForExist('//*[@id="youtube_banner_text_1"]', 3000)
-            //   .execute(function (banner_name) {
-            //       document.querySelector('//*[@id="youtube_banner_text_1"]').value = banner_name;
-            //   }, global.bannerInput)
-                .setValue('//*[@id="youtube_banner_text_1"]', global.bannerInput)
+              .waitForExist('//*[@id="youtube_banner_text_1"]', 3000)
+              .execute(function (banner_name) {
+                  document.querySelector('//*[@id="youtube_banner_text_1"]').value = banner_name;
+              }, global.bannerInput)
+               // .setValue('//*[@id="youtube_banner_text_1"]', global.bannerInput)
                 .call(done);
         });
 
